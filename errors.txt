@@ -1,0 +1,74 @@
+
+SN 68k version 2.53
+
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(128) : Error : Illegal value (61185)
+ move.b $ef01(a1),d0
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(136) : Error : Bad size on opcode
+ move a6,usp
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\DATA\OBJECTS\OBJ_0XDA.ASM(62) : Error : Illegal value (65472)
+ lea $ffc0(a1),a1
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(11874) : Error : Illegal value (65535)
+ move.b $ffff(a3),d3
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\DATA\OBJECTS\OBJ_0X34.ASM(181) : Error : Illegal value (65508)
+ move.b #$10,$ffe4(a0)
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\DATA\OBJECTS\OBJ_0X34.ASM(182) : Error : Illegal value (65524)
+ clr.w $fff4(a0)
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\DATA\OBJECTS\OBJ_0X34.ASM(203) : Error : Illegal value (65508)
+ move.b #$12,$ffe4(a0)
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(17998) : Error : Illegal value (65534)
+ clr.w $fffe(a0)
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(18023) : Error : Illegal value (65534)
+ clr.w $fffe(a0)
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(18051) : Error : Illegal value (65534)
+ clr.w $fffe(a0)
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(18084) : Error : Illegal value (65534)
+ clr.w $fffe(a0)
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(18114) : Error : Illegal value (65534)
+ clr.w $fffe(a0)
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(19087) : Error : Illegal value (65531)
+ move.b #$00,$fffb(a2)
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(19416) : Error : Illegal value (65531)
+ move.b #$00,$fffb(a2)
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(19519) : Error : Illegal value (65531)
+ move.b #$00,$fffb(a2)
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(20000) : Error : Illegal value (65534)
+ move.w #$0000,$fffe(a2)
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(20020) : Error : Illegal value (65532)
+ cmp.w $fffc(a1),d4
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(20035) : Error : Illegal value (65532)
+ cmp.w $fffc(a2),d4
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(20059) : Error : Illegal value (65532)
+ cmp.w $fffc(a1),d4
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(20074) : Error : Illegal value (65532)
+ cmp.w $fffc(a2),d4
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(20463) : Error : Illegal value (65532)
+ cmp.w $fffc(a1),d4
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(20478) : Error : Illegal value (65532)
+ cmp.w $fffc(a2),d4
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(20502) : Error : Illegal value (65532)
+ cmp.w $fffc(a1),d4
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(20517) : Error : Illegal value (65532)
+ cmp.w $fffc(a2),d4
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(20934) : Error : Illegal value (65530)
+ cmp.w $fffa(a0),d6
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(20957) : Error : Illegal value (65530)
+ cmp.w $fffa(a0),d6
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(20959) : Error : Illegal value (65532)
+ tst.b $fffc(a0)
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(21093) : Error : Illegal value (65530)
+ cmp.b $fffa(a0),d6
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(21095) : Error : Illegal value (65532)
+ tst.b $fffc(a0)
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(21108) : Error : Illegal value (65530)
+ cmp.b $fffa(a0),d6
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(21132) : Error : Illegal value (65530)
+ cmp.b $fffa(a0),d6
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\SONIC2CL.ASM(21134) : Error : Illegal value (65532)
+ tst.b $fffc(a0)
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\DATA\OBJECTS\OBJ_0X03.ASM(74) : Error : Illegal value (65535)
+ move.b #$01,$ffff(a2)
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\DATA\OBJECTS\OBJ_0X03.ASM(107) : Error : Illegal value (65535)
+ move.b #$00,$ffff(a2)
+C:\USERS\LEGOD\DOWNLOADS\SONIC2REV2 (1)\DATA\OBJECTS\OBJ_0X03.ASM(151) : Error : Illegal value (65535)
+ move.b #$01,$ffff(a2)
+C:\USERS\LEGOD\DOWN
