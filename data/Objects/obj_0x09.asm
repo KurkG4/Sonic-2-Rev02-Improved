@@ -18,7 +18,7 @@ Offset_0x033364:
                 lea     ($FFFFDB82).w, A1
                 moveq   #$0E, D0
 Offset_0x03336A:
-                move.w  $FFFC(A1), -(A1)
+                move.w  $FFFFFFFC(A1), -(A1)
                 dbra    D0, Offset_0x03336A
                 move.w  ($FFFFF602).w, -(A1)
                 rts

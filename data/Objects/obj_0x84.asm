@@ -73,7 +73,7 @@ Offset_0x021188:
                 bne.s   Offset_0x0211CA
                 cmp.w   $0008(A1), D1
                 bhi.s   Offset_0x0211C8
-                move.b  #$01, $FFFF(A2)
+                move.b  #$01, $FFFFFFFF(A2)
                 move.w  $000C(A0), D2
                 move.w  D2, D3
                 move.w  $0032(A0), D4
@@ -95,7 +95,7 @@ Offset_0x0211C8:
 Offset_0x0211CA:
                 cmp.w   $0008(A1), D1
                 bls.s   Offset_0x0211C8
-                move.b  #$00, $FFFF(A2)
+                move.b  #$00, $FFFFFFFF(A2)
                 move.w  $000C(A0), D2
                 move.w  D2, D3
                 move.w  $0032(A0), D4
@@ -139,7 +139,7 @@ Offset_0x021252:
                 bne.s   Offset_0x021296
                 cmp.w   $000C(A1), D1
                 bhi.s   Offset_0x021294
-                move.b  #$01, $FFFF(A2)
+                move.b  #$01, $FFFFFFFF(A2)
                 move.w  $0008(A0), D2
                 move.w  D2, D3
                 move.w  $0032(A0), D4
@@ -161,7 +161,7 @@ Offset_0x021294:
 Offset_0x021296:
                 cmp.w   $000C(A1), D1
                 bls.s   Offset_0x021294
-                move.b  #$00, $FFFF(A2)
+                move.b  #$00, $FFFFFFFF(A2)
                 move.w  $0008(A0), D2
                 move.w  D2, D3
                 move.w  $0032(A0), D4

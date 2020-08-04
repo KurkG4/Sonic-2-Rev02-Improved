@@ -1,5 +1,5 @@
 ;===============================================================================
-; Objeto 0x34 - Tela com o nome das fases conhecido também conhecido como: 
+; Objeto 0x34 - Tela com o nome das fases conhecido também conhecido como:
 ; [ Início ]         - Splash Screen, Title Cards, etc... 
 ;===============================================================================                   
 Offset_0x013BE4:
@@ -178,8 +178,8 @@ Offset_0x013DDA:
 Offset_0x013DDE:
                 move.w  $0034(A0), D0
                 bpl.s   Offset_0x013DF0
-                move.b  #$10, $FFE4(A0)
-                clr.w   $FFF4(A0)
+                move.b  #$10, $FFFFFFE4(A0)
+                clr.w   $FFFFFFF4(A0)
                 bra.s   Offset_0x013DDA
 Offset_0x013DF0:
                 add.w   D0, D0
@@ -200,7 +200,7 @@ Offset_0x013E20:
                 move.w  $0034(A0), D0
                 cmpi.w  #$0028, D0
                 bne.s   Offset_0x013E32
-                move.b  #$12, $FFE4(A0)
+                move.b  #$12, $FFFFFFE4(A0)
                 bra.s   Offset_0x013DDA
 Offset_0x013E32:
                 add.w   D0, D0

@@ -1,6 +1,6 @@
 @echo off
 echo Build started...
-asm68k /o ae- /p Sonic2Cl.asm,s2built.bin
+asm68k /o ae- /p Sonic2Cl.asm,s2built.bin, ,Sonic2Cl.lst
 
 IF NOT EXIST s2built.bin goto LABLERR
 rem rompad s2built.bin 255 0

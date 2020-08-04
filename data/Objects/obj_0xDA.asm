@@ -59,7 +59,7 @@ Offset_0x007A8E:
                 move.b  #$00, $0001(A1)
                 lea     $0040(A1), A1
                 dbra    D1, Offset_0x007A7A
-                lea     $FFC0(A1), A1
+                lea     $FFFFFFC0(A1), A1
                 move.b  D3, $0028(A1)
 Offset_0x007ACA:
                 tst.b   $0028(A0)
