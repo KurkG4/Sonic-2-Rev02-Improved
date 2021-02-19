@@ -1,4 +1,4 @@
-; Sonic 2 rev 2 Br Version Disassembly (Version 1.0 -> 2011-10-23)
+; Sonic 2 rev 2 Br Version Disassembly (Version 1.0 -> 2011-10-23)  
 ; Jogo dumpado de meu cartucho Sonic Classics - Tec Toy
 ; - By Esrael L. G. Neto (www.sonichacking.com / www.esraelneto.com.br)
 ;  (Neto baiano)
@@ -125,7 +125,7 @@ PortA_OK: ; Offset_0x000214:
                 lea     InitValues(PC), A5                     ; Offset_0x000294
                 movem.w (A5)+, D5-D7 
                 movem.l (A5)+, A0-A4 
-                move.b	-$10FF(a1),d0
+                move.b  $FFFFEF01(A1), D0
                 andi.b  #$0F, D0
                 beq.s   SkipSecurity                           ; Offset_0x000234
                 move.l  #'SEGA', $2F00(A1) 
@@ -11871,7 +11871,7 @@ Offset_0x00C83C:
                 move.w  ($FFFFEE00).w, D0
                 neg.w   D0
                 swap.w  D0
-                move.b	-1(a3),d3
+                move.b  $FFFFFFFF(A3), D3
                 move.w  $00(A2, D3), D0
                 neg.w   D0
 Offset_0x00C85C:
@@ -11885,20 +11885,20 @@ Offset_0x00C85C:
 Offset_0x00C86C:
                 dbra    D2, Offset_0x00C85C
                 rts
-;-------------------------------------------------------------------------------
-WFz_Scroll_Data: ; Offset_0x00C872:
+;-------------------------------------------------------------------------------                
+WFz_Scroll_Data: ; Offset_0x00C872:      
                 dc.b    $C0, $00, $C0, $00, $80, $00, $20, $08, $30, $0C, $30, $10, $20, $08, $30, $0C
                 dc.b    $30, $10, $20, $08, $30, $0C, $30, $10, $20, $08, $30, $0C, $30, $10, $20, $08
                 dc.b    $30, $0C, $30, $10, $20, $08, $30, $0C, $30, $10, $20, $08, $30, $0C, $30, $10
                 dc.b    $80, $04, $80, $04, $20, $08, $30, $0C, $30, $10, $20, $08, $30, $0C, $30, $10
                 dc.b    $20, $08, $30, $0C, $30, $10, $C0, $00, $C0, $00, $80, $00
-;-------------------------------------------------------------------------------
-WFz_Scroll_Data_2: ; Offset_0x00C8BE:
+;-------------------------------------------------------------------------------                         
+WFz_Scroll_Data_2: ; Offset_0x00C8BE:   
                 dc.b    $C0, $00, $C0, $00, $80, $00, $20, $08, $30, $0C, $30, $10, $20, $08, $30, $0C
                 dc.b    $30, $10, $20, $08, $30, $0C, $30, $10, $20, $08, $30, $0C, $30, $10, $20, $08
                 dc.b    $30, $0C, $30, $10, $20, $08, $30, $0C, $30, $10, $20, $08, $30, $0C, $30, $10
                 dc.b    $20, $08, $30, $0C, $30, $10, $20, $08, $30, $0C, $30, $10, $20, $08, $30, $0C
-                dc.b    $30, $10, $20, $08, $30, $0C, $30, $10, $C0, $00, $C0, $00, $80, $00
+                dc.b    $30, $10, $20, $08, $30, $0C, $30, $10, $C0, $00, $C0, $00, $80, $00                
 ;===============================================================================
 ; Rotina para controlar a rolagem da Wing Fortress
 ; [ Término ]
@@ -11907,7 +11907,7 @@ WFz_Scroll_Data_2: ; Offset_0x00C8BE:
 ;===============================================================================
 ; Rotina para controlar a rolagem da Hill Top
 ; [ Início ]
-;===============================================================================
+;=============================================================================== 
 Bg_Scroll_HTz: ; Offset_0x00C90C:
                 tst.w   (Two_Player_Flag).w                          ; $FFFFFFB8
                 bne     Bg_Scroll_HTz_2P                       ; Offset_0x00CABA
@@ -13782,7 +13782,7 @@ Offset_0x00D9E6:
 ;===============================================================================    
 ; Início das rotinas de desenho da tela
 ;===============================================================================
-
+                
 ;===============================================================================
 ; Sub Rotina LoadTilesAsYouMove - Rotina para recarregar os tiles ao se mover
 ; [ Início ]                      na tela
@@ -17995,7 +17995,7 @@ Offset_0x015546:
 Offset_0x01554C:
                 move.w  (A0)+, D0
                 beq.s   Offset_0x015564
-                clr.w	-2(a0)
+                clr.w   $FFFFFFFE(A0)
                 jsr     Offset_0x015730(PC)
                 move.l  D0, $0004(A6)
                 move.w  D5, D4
@@ -18020,7 +18020,7 @@ Offset_0x015588:
 Offset_0x01558E:
                 move.w  (A0)+, D0
                 beq.s   Offset_0x0155B2
-                clr.w	-2(a0)
+                clr.w   $FFFFFFFE(A0)
                 jsr     Offset_0x015730(PC)
                 move.w  D5, D4
 Offset_0x01559C:
@@ -18048,7 +18048,7 @@ Offset_0x0155D2:
 Offset_0x0155DE:
                 move.w  (A0)+, D0
                 beq.s   Offset_0x015602
-                clr.w	-2(a0)
+                clr.w   $FFFFFFFE(A0)
                 jsr     Offset_0x015730(PC)
                 move.w  D1, D4
 Offset_0x0155EC:
@@ -18081,7 +18081,7 @@ Offset_0x015634:
 Offset_0x015640:
                 move.w  (A0)+, D0
                 beq.s   Offset_0x01566C
-                clr.w	-2(a0)
+                clr.w   $FFFFFFFE(A0)
                 jsr     Offset_0x015730(PC)
                 moveq   #$03, D2
 Offset_0x01564E:
@@ -18111,7 +18111,7 @@ Offset_0x01568C:
 Offset_0x015692:
                 move.w  (A0)+, D0
                 beq.s   Offset_0x0156B2
-                clr.w	-2(a0)
+                clr.w   $FFFFFFFE(A0)
                 jsr     Offset_0x015730(PC)
                 move.w  D5, D4
 Offset_0x0156A0:
@@ -19084,7 +19084,7 @@ Offset_0x016682:
                 move.l  #$00000000, (A2)
                 rts
 Offset_0x01669C:
-                move.b  #$00, $FFFFFFFB(a2)
+                move.b  #$00, $FFFFFFFB(A2)
                 rts
 Offset_0x0166A4:
                 move.l  A4, -(A7)
@@ -19413,7 +19413,7 @@ Offset_0x0169E4:
                 move.l  #$00000000, (A2)
                 bra.s   Offset_0x016A04
 Offset_0x0169FE:
-                move.b  #$00, $FFFFFFFB(a2)
+                move.b  #$00, $FFFFFFFB(A2)
 Offset_0x016A04:
                 tst.w   ($FFFFF644).w
                 bne.s   Offset_0x016A04
@@ -19516,7 +19516,7 @@ Offset_0x016B04:
                 move.l  #$00000000, (A2)
                 rts
 Offset_0x016B1E:
-                move.b  #$00, $FFFFFFFB(a2)
+                move.b  #$00, $FFFFFFFB(A2)
                 rts    
 Offset_0x016B26:    
                 move.l  A4, -(A7)
@@ -20017,7 +20017,7 @@ Offset_0x016F9E:
 Offset_0x016FA6:
                 subq.w  #$06, A1
 Offset_0x016FA8:
-                cmp.w	2(a1),d4
+                cmp.w   $FFFFFFFC(A1), D4
                 bls.s   Offset_0x016FA6
                 move.w  A1, ($FFFFF712).w
                 move.w  ($FFFFF714).w, A2
@@ -20032,7 +20032,7 @@ Offset_0x016FC0:
 Offset_0x016FC8:
                 subq.w  #$06, A2
 Offset_0x016FCA:
-                cmp.w   $FFFFFFFC(a2),d4
+                cmp.w   $FFFFFFFC(A2), D4
                 bls.s   Offset_0x016FC8
                 move.w  A2, ($FFFFF714).w
                 tst.w   (Two_Player_Flag).w                          ; $FFFFFFB8
@@ -20056,7 +20056,7 @@ Offset_0x016FF8:
 Offset_0x017000:
                 subq.w  #$06, A1
 Offset_0x017002:
-                cmp.w	2(a1),d4
+                cmp.w   $FFFFFFFC(A1), D4
                 bls.s   Offset_0x017000
                 move.w  A1, ($FFFFF716).w
                 move.w  ($FFFFF718).w, A2
@@ -20071,7 +20071,7 @@ Offset_0x01701A:
 Offset_0x017022:
                 subq.w  #$06, A2
 Offset_0x017024:
-                cmp.w   $FFFFFFFC(a2),d4
+                cmp.w   $FFFFFFFC(A2), D4
                 bls.s   Offset_0x017022
                 move.w  A2, ($FFFFF718).w
                 rts
@@ -20460,7 +20460,7 @@ Offset_0x0173A6:
 Offset_0x0173AE:
                 subq.w  #$06, A1
 Offset_0x0173B0:
-                cmp.w	2(a1),d4
+                cmp.w   $FFFFFFFC(A1), D4
                 bls.s   Offset_0x0173AE
                 move.l  A1, ($FFFFF71C).w
                 move.l  ($FFFFF720).w, A2
@@ -20475,7 +20475,7 @@ Offset_0x0173C8:
 Offset_0x0173D0:
                 subq.w  #$06, A2
 Offset_0x0173D2:
-                cmp.w   $FFFFFFFC(a2),d4
+                cmp.w   $FFFFFFFC(A2), D4
                 bls.s   Offset_0x0173D0
                 move.l  A2, ($FFFFF720).w
                 tst.w   (Two_Player_Flag).w                          ; $FFFFFFB8
@@ -20499,7 +20499,7 @@ Offset_0x017400:
 Offset_0x017408:
                 subq.w  #$06, A1
 Offset_0x01740A:
-                cmp.w	2(a1),d4
+                cmp.w   $FFFFFFFC(A1), D4
                 bls.s   Offset_0x017408
                 move.l  A1, ($FFFFF724).w
                 move.l  ($FFFFF728).w, A2
@@ -20514,7 +20514,7 @@ Offset_0x017422:
 Offset_0x01742A:
                 subq.w  #$06, A2
 Offset_0x01742C:
-                cmp.w   $FFFFFFFC(a2),d4
+                cmp.w   $FFFFFFFC(A2), D4
                 bls.s   Offset_0x01742A
                 move.l  A2, ($FFFFF728).w
                 rts      
@@ -24692,7 +24692,7 @@ Obj_0x50_Aquis: ; Offset_0x02C89E:
                 include 'data\objects\obj_0x50.asm'    
 ;-------------------------------------------------------------------------------
 Obj_0x4B_Buzzer: ; Offset_0x02CC2C: 
-                include 'data\objects\obj_0x4B.asm'
+                include 'data\objects\obj_0x4B.asm' 
 ;-------------------------------------------------------------------------------  
 Obj_0x5C_Masher: ; Offset_0x02CF4C:               
                 include 'data\objects\obj_0x5C.asm'                               
@@ -25682,7 +25682,7 @@ ObjectSettings_A1: ; Offset_0x036028:
                 addq.b  #$02, $0024(A0)
                 rts
 ObjSet_Idx: ; Offset_0x03604E 
-                dc.w    Obj_0x8C_Ptr-ObjSet_Idx                ; Offset_0x036464
+                dc.w    Obj_0x8C_Ptr-ObjSet_Idx                ; Offset_0x036464 
                 dc.w    Obj_0x8E_Ptr-ObjSet_Idx                ; Offset_0x03670E 
                 dc.w    Obj_0x8F_Ptr-ObjSet_Idx                ; Offset_0x036718 
                 dc.w    Obj_0x90_Ptr-ObjSet_Idx                ; Offset_0x036722 
@@ -25694,7 +25694,7 @@ ObjSet_Idx: ; Offset_0x03604E
                 dc.w    Obj_0x99_Ptr-ObjSet_Idx                ; Offset_0x03734E
                 dc.w    Nebula_Bomb_Map_Ptr-ObjSet_Idx         ; Offset_0x03722C 
                 dc.w    Obj_0x9A_Ptr-ObjSet_Idx                ; Offset_0x037606 
-                dc.w    Obj_0x9B_Ptr-ObjSet_Idx                ; Offset_0x037610
+                dc.w    Obj_0x9B_Ptr-ObjSet_Idx                ; Offset_0x037610 
                 dc.w    Obj_0x9C_Ptr-ObjSet_Idx                ; Offset_0x03761A  
                 dc.w    Turtloid_Bullet_Map_Ptr-ObjSet_Idx     ; Offset_0x037236 
                 dc.w    Obj_0x9D_Ptr-ObjSet_Idx                ; Offset_0x037866 
@@ -31911,7 +31911,7 @@ PLC_PB_3E:
                 dc.w    $B000
 PLC_PB_3E_End:
 ;===============================================================================
-; Sprites carregados para uso no chefe da fase Wing Fortress
+; Sprites carregados para uso no chefe da fase Wing Fortress 
 ; [ Término ] 
 ;===============================================================================
 
@@ -31976,7 +31976,7 @@ PLC_PB_42_End:
 ;===============================================================================
 ; Sprites carregados para uso nos resultados do Special Stage 
 ; [ Término ] 
-;===============================================================================
+;===============================================================================   
 
 ;===============================================================================
 ; Carga dos Sprites de uma compilação anterior (Left over)
@@ -32223,7 +32223,7 @@ ARz_Water_Falls_2:                                            ; Offset_0x04FDFE:
 ARz_Water_Falls_3:                                            ; Offset_0x04FEFE:                
                 incbin  'data\arz\water_f3.dat'  
 ;-------------------------------------------------------------------------------                
-                cnop    $00000000, $00050000
+                cnop    $00000000, $00050000   
 ;-------------------------------------------------------------------------------                 
 Sonic_Sprites:                                                ; Offset_0x050000:
                 incbin  'data\sprites\sonic.dat'  
@@ -35903,7 +35903,7 @@ Offset_0x0E35F2:
                 incbin  'data\ss\0x0E35F2.kos'
                 dc.b    $00                                             ; Filler
 ;-------------------------------------------------------------------------------                   
-                cnop    $00000000, $000E4300
+                cnop    $00000000, $000E4300                 
 ;===============================================================================
 ; Array do posicionamento dos anéis das fases     
 ; [ Início ]
@@ -36143,6 +36143,58 @@ Null_Objects_Layout: ; Offset_0x0EBD52:
                 dc.w    $FFFF, $0000, $0000  
                 dc.w    $FFFF, $0000, $0000   
                 dc.w    $FFFF, $0000, $0000            
+HTz_FireBall:                                                 ; Offset_0x0F0160:  
+                incbin  'data\htz\fireball.nem'                
+EHz_Waterfall:                                                ; Offset_0x0F02D6:
+                incbin  'data\ehz\watrfall.nem'
+Htz_Lava_Bubble:                                              ; Offset_0x0F03DC:
+                incbin  'data\htz\lvbubble.nem'                
+EHz_Bridge:                                                   ; Offset_0x0F052A:
+                incbin  'data\ehz\bridge.nem'  
+Htz_Teleferic:                                                ; Offset_0x0F0602:
+                incbin  'data\htz\telefrcs.nem'  
+Htz_Automatic_Door:                                           ; Offset_0x0F08F6:
+                incbin  'data\htz\autodoor.nem'                                 
+Htz_See_saw:                                                  ; Offset_0x0F096E:  
+                incbin  'data\htz\see-saw.nem' 
+HTz_Unknow_Fireball:                                          ; Offset_0x0F0B06:
+                incbin  'data\htz\unk_fball.nem'                                  
+Htz_Rock:                                                     ; Offset_0x0F0C14:
+                incbin  'data\htz\rock.nem'    
+Htz_See_saw_badnick:                                          ; Offset_0x0F0D4A:   
+                incbin  'data\htz\see-sawb.nem'                              
+Mz_Rotating_Gear:                                             ; Offset_0x0F0DB6:
+                incbin  'data\mz\gear.nem'   
+Mz_Gear_Holes:                                                ; Offset_0x0F120E:
+                incbin  'data\mz\gearhole.nem'  
+Mz_Harpon_Platform:                                           ; Offset_0x0F12B6:
+                incbin  'data\mz\harp_ptf.nem'                  
+Mz_Steam:                                                     ; Offset_0x0F1384:
+                incbin  'data\mz\steam.nem'  
+Mz_Harpon:                                                    ; Offset_0x0F148E:
+                incbin  'data\mz\harpoon.nem' 
+Mz_Screw_Nut:                                                 ; Offset_0x0F1550:
+                incbin  'data\mz\screwnut.nem'   
+Mz_Lava_Bubble:                                               ; Offset_0x0F15C6:
+                incbin  'data\mz\lvbubble.nem'                                                               
+Mz_Elevator:                                                  ; Offset_0x0F167C:
+                incbin  'data\mz\elevator.nem'    
+Mz_Miscellaneous:                                             ; Offset_0x0F16EC:
+                incbin  'data\mz\miscelns.nem'   
+Mz_Mini_Gear:                                                 ; Offset_0x0F178E:
+                incbin  'data\mz\minigear.nem'  
+Mz_Teleport_Flash:                                            ; Offset_0x0F1870:
+                incbin  'data\mz\tlpflash.nem'     
+MCz_Box:                                                      ; Offset_0x0F187C:  
+                incbin  'data\mcz\box.nem'   
+MCz_Collapsing_Platform:                                      ; Offset_0x0F1ABA:
+                incbin  'data\mcz\clp_ptfm.nem'      
+MCz_Vines:                                                    ; Offset_0x0F1C64:
+                incbin  'data\mcz\vines.nem' 
+MCz_Vines_1:                                                  ; Offset_0x0F1D5C:
+                incbin  'data\mcz\vines_1.nem' 
+MCz_Bridge:                                                   ; Offset_0x0F1E06:     
+                incbin  'data\mcz\bridge.nem'                                   
 ;===============================================================================
 ; Array do posicionamento dos objetos das fases     
 ; [ Término ]
@@ -36242,7 +36294,7 @@ Offset_0x0EC0E6:
 Z80_Driver: ; Offset_0x0EC0E8
                 incbin  'data\sounds\z80.sax'
                 
-                cnop    $00000000, $000ED100
+                cnop    $00000000, $000ED100     
 DAC_Sample_00: ; Offset_0x0ED100:  
                 incbin  'data\sounds\DAC_00.bin'
 DAC_Sample_01: ; Offset_0x0ED394: 
@@ -36298,65 +36350,13 @@ Music_9C_Idx: ; Offset_0x0F8000:
 Music_9C:                                  
                 incbin  'data\sounds\cont_9C.sax'                 
 ;------------------------------------------------------------------------------- 
-                cnop    $00000000, $000F0160, $00000000
-HTz_FireBall:                                                 ; Offset_0x0F0160:  
-                incbin  'data\htz\fireball.nem'                
-EHz_Waterfall:                                                ; Offset_0x0F02D6:
-                incbin  'data\ehz\watrfall.nem'
-Htz_Lava_Bubble:                                              ; Offset_0x0F03DC:
-                incbin  'data\htz\lvbubble.nem'                
-EHz_Bridge:                                                   ; Offset_0x0F052A:
-                incbin  'data\ehz\bridge.nem'  
-Htz_Teleferic:                                                ; Offset_0x0F0602:
-                incbin  'data\htz\telefrcs.nem'  
-Htz_Automatic_Door:                                           ; Offset_0x0F08F6:
-                incbin  'data\htz\autodoor.nem'                                 
-Htz_See_saw:                                                  ; Offset_0x0F096E:  
-                incbin  'data\htz\see-saw.nem' 
-HTz_Unknow_Fireball:                                          ; Offset_0x0F0B06:
-                incbin  'data\htz\unk_fball.nem'                                  
-Htz_Rock:                                                     ; Offset_0x0F0C14:
-                incbin  'data\htz\rock.nem'    
-Htz_See_saw_badnick:                                          ; Offset_0x0F0D4A:   
-                incbin  'data\htz\see-sawb.nem'                              
-Mz_Rotating_Gear:                                             ; Offset_0x0F0DB6:
-                incbin  'data\mz\gear.nem'   
-Mz_Gear_Holes:                                                ; Offset_0x0F120E:
-                incbin  'data\mz\gearhole.nem'  
-Mz_Harpon_Platform:                                           ; Offset_0x0F12B6:
-                incbin  'data\mz\harp_ptf.nem'                  
-Mz_Steam:                                                     ; Offset_0x0F1384:
-                incbin  'data\mz\steam.nem'  
-Mz_Harpon:                                                    ; Offset_0x0F148E:
-                incbin  'data\mz\harpoon.nem' 
-Mz_Screw_Nut:                                                 ; Offset_0x0F1550:
-                incbin  'data\mz\screwnut.nem'   
-Mz_Lava_Bubble:                                               ; Offset_0x0F15C6:
-                incbin  'data\mz\lvbubble.nem'                                                               
-Mz_Elevator:                                                  ; Offset_0x0F167C:
-                incbin  'data\mz\elevator.nem'    
-Mz_Miscellaneous:                                             ; Offset_0x0F16EC:
-                incbin  'data\mz\miscelns.nem'   
-Mz_Mini_Gear:                                                 ; Offset_0x0F178E:
-                incbin  'data\mz\minigear.nem'  
-Mz_Teleport_Flash:                                            ; Offset_0x0F1870:
-                incbin  'data\mz\tlpflash.nem'     
-MCz_Box:                                                      ; Offset_0x0F187C:  
-                incbin  'data\mcz\box.nem'   
-MCz_Collapsing_Platform:                                      ; Offset_0x0F1ABA:
-                incbin  'data\mcz\clp_ptfm.nem'      
-MCz_Vines:                                                    ; Offset_0x0F1C64:
-                incbin  'data\mcz\vines.nem' 
-MCz_Vines_1:                                                  ; Offset_0x0F1D5C:
-                incbin  'data\mcz\vines_1.nem' 
-MCz_Bridge:                                                   ; Offset_0x0F1E06:     
-                incbin  'data\mcz\bridge.nem'                                                                                                                                                                
+                cnop    $00000000, $000F0160                                                                                                                                                 
 ;-------------------------------------------------------------------------------                             
                 cnop    $00000000, $000F1E8C
 Sega_Snd: ; Offset_0x0F1E8C:                
                 incbin  'data\sounds\sega.snd'                                  
 ;-------------------------------------------------------------------------------                              
-                cnop    $00000000, $000F8000   
+                cnop    $00000000, $000F8000  
 Music_81_To_9F: ; Offset_0x0F8000:                
                 dc.w    (((Music_88_Ptr>>$08)|(Music_88_Ptr<<$08))&$FFFF) 
                 dc.w    (((Music_82_Ptr>>$08)|(Music_82_Ptr<<$08))&$FFFF)
@@ -36398,7 +36398,7 @@ Music_97: ; Invencibility                                    ; Offset_0x00F8359:
 Music_88: ; Casino Night Versus Mode                         ; Offset_0x00F84F6: 
                 incbin  'data\sounds\cnzvs_88.sax'
 Music_82: ; Green Hill                                       ; Offset_0x00F88C4:  
-                incbin  'data\sounds\ghz_82.sax'
+                incbin  'data\sounds\GGZ1_S2.sax'
 Music_85: ; Metropolis                                       ; Offset_0x00F8DEE:
                 incbin  'data\sounds\mz_85.sax'
 Music_89: ; Casino Night                                     ; Offset_0x00F917B:

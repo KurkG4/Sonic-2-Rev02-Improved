@@ -29,6 +29,10 @@
     Aquatic Ruin Zone Act 2
     Sky Chase Zone      
   end 
+[Assembler]
+  begin
+    Main = Sonic2CL.asm
+  end;
 ;============================================================
 ; [Mode] is an session identifier
 ; "Mode 0" is a identifier and can have Any Name
