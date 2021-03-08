@@ -1,4 +1,4 @@
-; Sonic 2 rev 2 Br Version Disassembly (Version 1.0 -> 2011-10-23)  
+; Sonic 2 rev 2 Br Version Disassembly (Version 1.0 -> 2011-10-23)
 ; Jogo dumpado de meu cartucho Sonic Classics - Tec Toy
 ; - By Esrael L. G. Neto (www.sonichacking.com / www.esraelneto.com.br)
 ;  (Neto baiano)
@@ -3287,7 +3287,7 @@ PalLoad4_Loop: ; Offset_0x002736:
 ; Sub Rotina PalLoad4_Water - Rotina para carregar a paleta embaixo da água
 ; [ Término ]
 ;===============================================================================  
-PalPointers: ; Offset_0x00273E:             
+PalPointers: ; Offset_0x00273E:
                 dc.l    Pal_Sega_Bg                   ; $00 - Offset_0x00287E -> Sega Logo  
                 dc.w    $FB00, $001F
                 dc.l    Pal_TitleScreen_Miles         ; $01 - Offset_0x0028FE -> Miles na tela título
@@ -30048,16 +30048,16 @@ Debug_SCz_End:
 TilesMainTable: ; Offset_0x0422DE: 
                 dc.l    ($04<<$18)|Emerald_Hill_Tiles    ; Offset_0x095C24  $04 = ponteiro em ArtLoadCues
                 dc.l    ($05<<$18)|Emerald_Hill_Blocks   ; Offset_0x094E74  $05 = ponteiro em ArtLoadCues 
-                dc.l    ($04<<$18)|Emerald_Hill_Chunks   ; Offset_0x099D34  $04 = ponteiro em PalPointers  
+                dc.l    ($04<<$18)|Emerald_Hill_Chunks   ; Offset_0x099D34  $04 = ponteiro em PalPointers
                 dc.l    ($06<<$18)|Emerald_Hill_Tiles    ; Offset_0x095C24  $06 = ponteiro em ArtLoadCues
                 dc.l    ($07<<$18)|Emerald_Hill_Blocks   ; Offset_0x094E74  $07 = ponteiro em ArtLoadCues 
-                dc.l    ($05<<$18)|Emerald_Hill_Chunks   ; Offset_0x099D34  $05 = ponteiro em PalPointers 
+                dc.l    ($05<<$18)|Emerald_Hill_Chunks   ; Offset_0x099D34  $05 = ponteiro em PalPointers
                 dc.l    ($08<<$18)|Emerald_Hill_Tiles    ; Offset_0x095C24  $08 = ponteiro em ArtLoadCues
                 dc.l    ($09<<$18)|Emerald_Hill_Blocks   ; Offset_0x094E74  $09 = ponteiro em ArtLoadCues 
-                dc.l    ($06<<$18)|Emerald_Hill_Chunks   ; Offset_0x099D34  $06 = ponteiro em PalPointers  
+                dc.l    ($06<<$18)|Emerald_Hill_Chunks   ; Offset_0x099D34  $06 = ponteiro em PalPointers
                 dc.l    ($0A<<$18)|Emerald_Hill_Tiles    ; Offset_0x095C24  $0A = ponteiro em ArtLoadCues
                 dc.l    ($0B<<$18)|Emerald_Hill_Blocks   ; Offset_0x094E74  $0B = ponteiro em ArtLoadCues 
-                dc.l    ($07<<$18)|Emerald_Hill_Chunks   ; Offset_0x099D34  $07 = ponteiro em PalPointers  
+                dc.l    ($07<<$18)|Emerald_Hill_Chunks   ; Offset_0x099D34  $07 = ponteiro em PalPointers
                 dc.l    ($0C<<$18)|Metropolis_Tiles      ; Offset_0x09DB64  $0C = ponteiro em ArtLoadCues
                 dc.l    ($0D<<$18)|Metropolis_Blocks     ; Offset_0x09CFD4  $0D = ponteiro em ArtLoadCues
                 dc.l    ($08<<$18)|Metropolis_Chunks     ; Offset_0x0A06C4  $08 = ponteiro em PalPointers
@@ -30069,31 +30069,31 @@ TilesMainTable: ; Offset_0x0422DE:
                 dc.l    ($0A<<$18)|Sky_Chase_Chunks      ; Offset_0x0C85E4  $0A = ponteiro em PalPointers
                 dc.l    ($12<<$18)|Emerald_Hill_Tiles    ; Offset_0x095C24  $12 = ponteiro em ArtLoadCues
                 dc.l    ($13<<$18)|Emerald_Hill_Blocks   ; Offset_0x094E74  $13 = ponteiro em ArtLoadCues 
-                dc.l    ($0B<<$18)|Emerald_Hill_Chunks   ; Offset_0x099D34  $0B = ponteiro em PalPointers  
+                dc.l    ($0B<<$18)|Emerald_Hill_Chunks   ; Offset_0x099D34  $0B = ponteiro em PalPointers
                 dc.l    ($14<<$18)|Hidden_Palace_Tiles   ; Offset_0x0A3364  $14 = ponteiro em ArtLoadCues
                 dc.l    ($15<<$18)|Hidden_Palace_Blocks  ; Offset_0x0A3364  $15 = ponteiro em ArtLoadCues
-                dc.l    ($0C<<$18)|Hidden_Palace_Chunks  ; Offset_0x0A3364  $0C = ponteiro em PalPointers 
+                dc.l    ($0C<<$18)|Hidden_Palace_Chunks  ; Offset_0x0A3364  $0C = ponteiro em PalPointers
                 dc.l    ($16<<$18)|Emerald_Hill_Tiles    ; Offset_0x095C24  $16 = ponteiro em ArtLoadCues
                 dc.l    ($17<<$18)|Emerald_Hill_Blocks   ; Offset_0x094E74  $17 = ponteiro em ArtLoadCues 
-                dc.l    ($0D<<$18)|Emerald_Hill_Chunks   ; Offset_0x099D34  $0D = ponteiro em PalPointers                             
+                dc.l    ($0D<<$18)|Emerald_Hill_Chunks   ; Offset_0x099D34  $0D = ponteiro em PalPointers
                 dc.l    ($18<<$18)|Oil_Ocean_Tiles       ; Offset_0x0A4204  $18 = ponteiro em ArtLoadCues 
                 dc.l    ($19<<$18)|Oil_Ocean_Blocks      ; Offset_0x0A3364  $19 = ponteiro em ArtLoadCues 
-                dc.l    ($0E<<$18)|Oil_Ocean_Chunks      ; Offset_0x0A6834  $0E = ponteiro em PalPointers 
+                dc.l    ($0E<<$18)|Oil_Ocean_Chunks      ; Offset_0x0A6834  $0E = ponteiro em PalPointers
                 dc.l    ($1A<<$18)|Mystic_Cave_Tiles     ; Offset_0x0A9D74  $1A = ponteiro em ArtLoadCues 
                 dc.l    ($1B<<$18)|Mystic_Cave_Blocks    ; Offset_0x0A8D04  $1B = ponteiro em ArtLoadCues 
-                dc.l    ($0F<<$18)|Mystic_Cave_Chunks    ; Offset_0x0AD454  $0F = ponteiro em PalPointers 
+                dc.l    ($0F<<$18)|Mystic_Cave_Chunks    ; Offset_0x0AD454  $0F = ponteiro em PalPointers
                 dc.l    ($1C<<$18)|Casino_Night_Tiles    ; Offset_0x0B0894  $1C = ponteiro em ArtLoadCues 
                 dc.l    ($1D<<$18)|Casino_Night_Blocks   ; Offset_0x0AFFC4  $1D = ponteiro em ArtLoadCues 
-                dc.l    ($10<<$18)|Casino_Night_Chunks   ; Offset_0x0B2CF4  $10 = ponteiro em PalPointers 
+                dc.l    ($10<<$18)|Casino_Night_Chunks   ; Offset_0x0B2CF4  $10 = ponteiro em PalPointers
                 dc.l    ($1E<<$18)|Chemical_Plant_Tiles  ; Offset_0x0B6174  $1E = ponteiro em ArtLoadCues 
                 dc.l    ($1F<<$18)|Chemical_Plant_Blocks ; Offset_0x0B5234  $1F = ponteiro em ArtLoadCues 
-                dc.l    ($11<<$18)|Chemical_Plant_Chunks ; Offset_0x0B90F4  $11 = ponteiro em PalPointers 
+                dc.l    ($11<<$18)|Chemical_Plant_Chunks ; Offset_0x0B90F4  $11 = ponteiro em PalPointers
                 dc.l    ($20<<$18)|Chemical_Plant_Tiles  ; Offset_0x0B6174  $20 = ponteiro em ArtLoadCues 
                 dc.l    ($21<<$18)|Chemical_Plant_Blocks ; Offset_0x0B5234  $21 = ponteiro em ArtLoadCues 
-                dc.l    ($12<<$18)|Chemical_Plant_Chunks ; Offset_0x0B90F4  $12 = ponteiro em PalPointers 
+                dc.l    ($12<<$18)|Chemical_Plant_Chunks ; Offset_0x0B90F4  $12 = ponteiro em PalPointers
                 dc.l    ($22<<$18)|Aquatic_Ruin_Tiles    ; Offset_0x0BCC24  $22 = ponteiro em ArtLoadCues 
                 dc.l    ($23<<$18)|Aquatic_Ruin_Blocks   ; Offset_0x0BB944  $23 = ponteiro em ArtLoadCues 
-                dc.l    ($13<<$18)|Aquatic_Ruin_Chunks   ; Offset_0x0C1434  $13 = ponteiro em PalPointers 
+                dc.l    ($13<<$18)|Aquatic_Ruin_Chunks   ; Offset_0x0C1434  $13 = ponteiro em PalPointers
                 dc.l    ($24<<$18)|Sky_Chase_Tiles       ; Offset_0x0C5004  $24 = ponteiro em ArtLoadCues
                 dc.l    ($25<<$18)|Sky_Chase_Blocks      ; Offset_0x0C4074  $25 = ponteiro em ArtLoadCues
                 dc.l    ($14<<$18)|Sky_Chase_Chunks      ; Offset_0x0C85E4  $14 = ponteiro em PalPointers
