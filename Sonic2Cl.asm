@@ -36398,7 +36398,7 @@ Music_97: ; Invencibility                                    ; Offset_0x00F8359:
 Music_88: ; Casino Night Versus Mode                         ; Offset_0x00F84F6: 
                 incbin  'data\sounds\cnzvs_88.sax'
 Music_82: ; Green Hill                                       ; Offset_0x00F88C4:  
-                incbin  'data\sounds\GGZ1_S2.sax'
+                incbin  'data\sounds\GHz_82.sax'
 Music_85: ; Metropolis                                       ; Offset_0x00F8DEE:
                 incbin  'data\sounds\mz_85.sax'
 Music_89: ; Casino Night                                     ; Offset_0x00F917B:
