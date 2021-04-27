@@ -1,3 +1,0 @@
-C:\USERS\LEGOD\DOCUMENTS\SONIC-2-REV02-IMPROVED\SONIC2CL.ASM(36402) : Error : Could not open file 'data\sounds\GGZ1_S2.sax'
- incbin 'data\sounds\GGZ1_S2.sax'
-Errors during pass 1 - pass 2 aborted
