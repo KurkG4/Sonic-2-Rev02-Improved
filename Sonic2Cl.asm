@@ -3,6 +3,7 @@
 ; - By Esrael L. G. Neto (www.sonichacking.com / www.esraelneto.com.br)
 ;  (Neto baiano)
                 include 'vars.asm'; 
+				org 0
 ; Sega Genesis Rom Header 
                 dc.l    StackPointer            ; Initial stack pointer value
                 dc.l    ProgramStart            ; Start of our program in ROM
@@ -70,9 +71,9 @@
                 dc.l    ErrorTrap               ; Unused (reserved)    
                 
 Console:
-                dc.b    'SEGA MEGA DRIVE (C)'
+                dc.b    'SEGA MEGA DRIVE '
 Date:                
-                dc.b    'SEGA 1997.JAN'
+                dc.b    '(C)SEGA 1997.JAN'
 Title_Local:                
                 dc.b    'SONIC THE             HEDGEHOG 2                '
 Title_International:                
@@ -31983,7 +31984,7 @@ PLC_PB_42_End:
 ; [ Término ]
 ;=============================================================================== 
 
-                cnop    $00000000, $00042D50
+                org    	$00042D50
 ;===============================================================================
 ; Início da área de dados do jogo o único código nesta área é do driver de Som
 ;===============================================================================
@@ -32223,7 +32224,7 @@ ARz_Water_Falls_2:                                            ; Offset_0x04FDFE:
 ARz_Water_Falls_3:                                            ; Offset_0x04FEFE:                
                 incbin  'data\arz\water_f3.dat'  
 ;-------------------------------------------------------------------------------                
-                cnop    $00000000, $00050000   
+                org    	$00050000   
 ;-------------------------------------------------------------------------------                 
 Sonic_Sprites:                                                ; Offset_0x050000:
                 incbin  'data\sprites\sonic.dat'  
@@ -35903,7 +35904,7 @@ Offset_0x0E35F2:
                 incbin  'data\ss\0x0E35F2.kos'
                 dc.b    $00                                             ; Filler
 ;-------------------------------------------------------------------------------                   
-                cnop    $00000000, $000E4300                 
+                org    	$000E4300                 
 ;===============================================================================
 ; Array do posicionamento dos anéis das fases     
 ; [ Início ]
@@ -36031,7 +36032,7 @@ SCz_2_Rings_Layout:                                           ; Offset_0x0E66D6:
 ; Array do posicionamento dos anéis das fases     
 ; [ Término ]
 ;===============================================================================                  
-                cnop    $00000000, $000E6800
+                org 	$000E6800
 ;===============================================================================
 ; Array do posicionamento dos objetos das fases     
 ; [ Início ]
@@ -36199,7 +36200,7 @@ MCz_Bridge:                                                   ; Offset_0x0F1E06:
 ; Array do posicionamento dos objetos das fases     
 ; [ Término ]
 ;===============================================================================                                       
-                cnop    $00000000, $000EC000
+                org    	$000EC000
 ;===============================================================================
 ; Driver de Som
 ; [ Início ]
@@ -36290,11 +36291,11 @@ Offset_0x0EC0DE:
                 bne.s   Offset_0x0EC0E6
                 addq.w  #$04, A7
 Offset_0x0EC0E6:
-                rts
+                rts                              
 Z80_Driver: ; Offset_0x0EC0E8
                 incbin  'data\sounds\z80.sax'
-
-                cnop    0, $ED100
+                even
+                org		$00ED100 
 DAC_Sample_00: ; Offset_0x0ED100:  
                 incbin  'data\sounds\DAC_00.bin'
 DAC_Sample_01: ; Offset_0x0ED394: 
@@ -36303,93 +36304,93 @@ DAC_Sample_02: ; Offset_0x0EDAB7:
                 incbin  'data\sounds\DAC_02.bin'   
 DAC_Sample_03: ; Offset_0x0EE66C:  
                 incbin  'data\sounds\DAC_03.bin'                           
-DAC_Sample_04: ; Offset_0x0EED7A:
-                incbin  'data\sounds\DAC_04.bin'
+DAC_Sample_04: ; Offset_0x0EED7A:  
+                incbin  'data\sounds\DAC_04.bin' 
 DAC_Sample_05: ; Offset_0x0EF2F0:  
                 incbin  'data\sounds\DAC_05.bin'  
 DAC_Sample_06: ; Offset_0x0EFA3C:  
                 incbin  'data\sounds\DAC_06.bin'      
-                even
-
-Music_81_Ptr equ (Music_81&$FFFF)|$8000
-Music_82_Ptr equ (Music_82&$FFFF)|$8000
-Music_83_Ptr equ (Music_83&$FFFF)|$8000
-Music_84_Ptr equ (Music_84&$FFFF)|$8000
-Music_85_Ptr equ (Music_85&$FFFF)|$8000
-Music_86_Ptr equ (Music_86&$FFFF)|$8000
-Music_87_Ptr equ (Music_87&$FFFF)|$8000
-Music_88_Ptr equ (Music_88&$FFFF)|$8000
-Music_89_Ptr equ (Music_89&$FFFF)|$8000
-Music_8A_Ptr equ (Music_8A&$FFFF)|$8000
-Music_8B_Ptr equ (Music_8B&$FFFF)|$8000
-Music_8C_Ptr equ (Music_8C&$FFFF)|$8000
-Music_8D_Ptr equ (Music_8D&$FFFF)|$8000
-Music_8E_Ptr equ (Music_8E&$FFFF)|$8000
-Music_8F_Ptr equ (Music_8F&$FFFF)|$8000
-Music_90_Ptr equ (Music_90&$FFFF)|$8000
-Music_91_Ptr equ (Music_91&$FFFF)|$8000
-Music_92_Ptr equ (Music_92&$FFFF)|$8000
-Music_93_Ptr equ (Music_93&$FFFF)|$8000
-Music_94_Ptr equ (Music_94&$FFFF)|$8000
-Music_95_Ptr equ (Music_95&$FFFF)|$8000
-Music_96_Ptr equ (Music_96&$FFFF)|$8000
-Music_97_Ptr equ (Music_97&$FFFF)|$8000
-Music_98_Ptr equ (Music_98&$FFFF)|$8000
-Music_99_Ptr equ (Music_99&$FFFF)|$8000
-Music_9A_Ptr equ (Music_9A&$FFFF)|$8000
-Music_9B_Ptr equ (Music_9B&$FFFF)|$8000
-Music_9C_Ptr equ (Music_9C&$FFFF)|$8000
-Music_9D_Ptr equ (Music_9D&$FFFF)|$8000
-Music_9E_Ptr equ (Music_9E&$FFFF)|$8000
-Music_9F_Ptr equ (Music_9F&$FFFF)|$8000
-
+                even                                                        
+                
+Music_81_Ptr equ  (Music_81&$FFFF)|$8000  
+Music_82_Ptr equ  (Music_82&$FFFF)|$8000  
+Music_83_Ptr equ  (Music_83&$FFFF)|$8000  
+Music_84_Ptr equ  (Music_84&$FFFF)|$8000  
+Music_85_Ptr equ  (Music_85&$FFFF)|$8000  
+Music_86_Ptr equ  (Music_86&$FFFF)|$8000  
+Music_87_Ptr equ  (Music_87&$FFFF)|$8000  
+Music_88_Ptr equ  (Music_88&$FFFF)|$8000  
+Music_89_Ptr equ  (Music_89&$FFFF)|$8000  
+Music_8A_Ptr equ  (Music_8A&$FFFF)|$8000  
+Music_8B_Ptr equ  (Music_8B&$FFFF)|$8000  
+Music_8C_Ptr equ  (Music_8C&$FFFF)|$8000  
+Music_8D_Ptr equ  (Music_8D&$FFFF)|$8000  
+Music_8E_Ptr equ  (Music_8E&$FFFF)|$8000  
+Music_8F_Ptr equ  (Music_8F&$FFFF)|$8000  
+Music_90_Ptr equ  (Music_90&$FFFF)|$8000  
+Music_91_Ptr equ  (Music_91&$FFFF)|$8000  
+Music_92_Ptr equ  (Music_92&$FFFF)|$8000  
+Music_93_Ptr equ  (Music_93&$FFFF)|$8000  
+Music_94_Ptr equ  (Music_94&$FFFF)|$8000  
+Music_95_Ptr equ  (Music_95&$FFFF)|$8000  
+Music_96_Ptr equ  (Music_96&$FFFF)|$8000  
+Music_97_Ptr equ  (Music_97&$FFFF)|$8000  
+Music_98_Ptr equ  (Music_98&$FFFF)|$8000  
+Music_99_Ptr equ  (Music_99&$FFFF)|$8000  
+Music_9A_Ptr equ  (Music_9A&$FFFF)|$8000  
+Music_9B_Ptr equ  (Music_9B&$FFFF)|$8000  
+Music_9C_Ptr equ  (Music_9C&$FFFF)|$8000  
+Music_9D_Ptr equ  (Music_9D&$FFFF)|$8000  
+Music_9E_Ptr equ  (Music_9E&$FFFF)|$8000  
+Music_9F_Ptr equ  (Music_9F&$FFFF)|$8000   
+               
 ;-------------------------------------------------------------------------------                   
-                cnop    0, $F0000
-Music_9C_Idx:
-		dc.w	(((Music_9C_Ptr>>$8)|(Music_9C_Ptr<<$8))&$FFFF)
-Music_9C:
-                incbin  'data\sounds\cont_9C.sax'
-;-------------------------------------------------------------------------------
-                cnop    0, $F0160
-;-------------------------------------------------------------------------------
-                cnop    0, $F1E8C
-Sega_Snd: ; Offset_0x0F1E8C:
-                incbin  'data\sounds\sega.snd'
-;-------------------------------------------------------------------------------
-                cnop    0, $F8000
-Music_81_To_9F:
-		dc.w	(((Music_88_Ptr>>$8)|(Music_88_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_82_Ptr>>$8)|(Music_82_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_85_Ptr>>$8)|(Music_85_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_89_Ptr>>$8)|(Music_89_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_8B_Ptr>>$8)|(Music_8B_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_83_Ptr>>$8)|(Music_83_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_87_Ptr>>$8)|(Music_87_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_8A_Ptr>>$8)|(Music_8A_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_92_Ptr>>$8)|(Music_92_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_91_Ptr>>$8)|(Music_91_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_95_Ptr>>$8)|(Music_95_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_94_Ptr>>$8)|(Music_94_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_8E_Ptr>>$8)|(Music_8E_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_93_Ptr>>$8)|(Music_93_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_8D_Ptr>>$8)|(Music_8D_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_84_Ptr>>$8)|(Music_84_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_8F_Ptr>>$8)|(Music_8F_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_8C_Ptr>>$8)|(Music_8C_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_81_Ptr>>$8)|(Music_81_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_96_Ptr>>$8)|(Music_96_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_86_Ptr>>$8)|(Music_86_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_98_Ptr>>$8)|(Music_98_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_99_Ptr>>$8)|(Music_99_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_9A_Ptr>>$8)|(Music_9A_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_9B_Ptr>>$8)|(Music_9B_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_97_Ptr>>$8)|(Music_97_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_9D_Ptr>>$8)|(Music_9D_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_90_Ptr>>$8)|(Music_90_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_9F_Ptr>>$8)|(Music_9F_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_9E_Ptr>>$8)|(Music_9E_Ptr<<$8))&$FFFF)
+                org    	$000F8000
+Music_9C_Idx: ; Offset_0x0F8000:                        
+                dc.w    (((Music_9C_Ptr>>$08)|(Music_9C_Ptr<<$08))&$FFFF)  
+Music_9C:                                  
+                incbin  'data\sounds\cont_9C.sax'                 
+				even
+;------------------------------------------------------------------------------- 
+                org		$000F1E8C
+Sega_Snd: ; Offset_0x0F1E8C:                
+                incbin  'data\sounds\sega.snd'              
+				even
+;-------------------------------------------------------------------------------                              
+                org		$000F8000  
+Music_81_To_9F: ; Offset_0x0F8000:                
+                dc.w    (((Music_88_Ptr>>$08)|(Music_88_Ptr<<$08))&$FFFF) 
+                dc.w    (((Music_82_Ptr>>$08)|(Music_82_Ptr<<$08))&$FFFF)
+                dc.w    (((Music_85_Ptr>>$08)|(Music_85_Ptr<<$08))&$FFFF)
+                dc.w    (((Music_89_Ptr>>$08)|(Music_89_Ptr<<$08))&$FFFF)
+                dc.w    (((Music_8B_Ptr>>$08)|(Music_8B_Ptr<<$08))&$FFFF)
+                dc.w    (((Music_83_Ptr>>$08)|(Music_83_Ptr<<$08))&$FFFF)
+                dc.w    (((Music_87_Ptr>>$08)|(Music_87_Ptr<<$08))&$FFFF) 
+                dc.w    (((Music_8A_Ptr>>$08)|(Music_8A_Ptr<<$08))&$FFFF) 
+                dc.w    (((Music_92_Ptr>>$08)|(Music_92_Ptr<<$08))&$FFFF) 
+                dc.w    (((Music_91_Ptr>>$08)|(Music_91_Ptr<<$08))&$FFFF)                  
+                dc.w    (((Music_95_Ptr>>$08)|(Music_95_Ptr<<$08))&$FFFF)
+                dc.w    (((Music_94_Ptr>>$08)|(Music_94_Ptr<<$08))&$FFFF)
+                dc.w    (((Music_8E_Ptr>>$08)|(Music_8E_Ptr<<$08))&$FFFF)
+                dc.w    (((Music_93_Ptr>>$08)|(Music_93_Ptr<<$08))&$FFFF)
+                dc.w    (((Music_8D_Ptr>>$08)|(Music_8D_Ptr<<$08))&$FFFF)
+                dc.w    (((Music_84_Ptr>>$08)|(Music_84_Ptr<<$08))&$FFFF)     
+                dc.w    (((Music_8F_Ptr>>$08)|(Music_8F_Ptr<<$08))&$FFFF)  
+                dc.w    (((Music_8C_Ptr>>$08)|(Music_8C_Ptr<<$08))&$FFFF)  
+                dc.w    (((Music_81_Ptr>>$08)|(Music_81_Ptr<<$08))&$FFFF)  
+                dc.w    (((Music_96_Ptr>>$08)|(Music_96_Ptr<<$08))&$FFFF)  
+                dc.w    (((Music_86_Ptr>>$08)|(Music_86_Ptr<<$08))&$FFFF)                  
+                dc.w    (((Music_98_Ptr>>$08)|(Music_98_Ptr<<$08))&$FFFF)  
+                dc.w    (((Music_99_Ptr>>$08)|(Music_99_Ptr<<$08))&$FFFF)     
+                dc.w    (((Music_9A_Ptr>>$08)|(Music_9A_Ptr<<$08))&$FFFF) 
+                dc.w    (((Music_9B_Ptr>>$08)|(Music_9B_Ptr<<$08))&$FFFF)
+                dc.w    (((Music_97_Ptr>>$08)|(Music_97_Ptr<<$08))&$FFFF)  
+                dc.w    (((Music_9D_Ptr>>$08)|(Music_9D_Ptr<<$08))&$FFFF)                    
+                dc.w    (((Music_90_Ptr>>$08)|(Music_90_Ptr<<$08))&$FFFF)   
+                dc.w    (((Music_9F_Ptr>>$08)|(Music_9F_Ptr<<$08))&$FFFF)
+                dc.w    (((Music_9E_Ptr>>$08)|(Music_9E_Ptr<<$08))&$FFFF)                                 
 ;-------------------------------------------------------------------------------                                              
-Music_90: ; Hidden Palace                                    ; Offset_0x00F803C:
+Music_90: ; Hidden Palace                                    ; Offset_0x00F803C: 
                 incbin  'data\sounds\hpz_90.sax' 
 Music_9F: ; Panic                                            ; Offset_0x00F823B:
                 incbin  'data\sounds\pnc_9F.sax'
@@ -36398,7 +36399,7 @@ Music_97: ; Invencibility                                    ; Offset_0x00F8359:
 Music_88: ; Casino Night Versus Mode                         ; Offset_0x00F84F6: 
                 incbin  'data\sounds\cnzvs_88.sax'
 Music_82: ; Green Hill                                       ; Offset_0x00F88C4:  
-                incbin  'data\sounds\GHz_82.sax'
+                incbin  'data\sounds\GGZ1_S2.sax'
 Music_85: ; Metropolis                                       ; Offset_0x00F8DEE:
                 incbin  'data\sounds\mz_85.sax'
 Music_89: ; Casino Night                                     ; Offset_0x00F917B:
@@ -36449,6 +36450,7 @@ Music_9D: ; Emerald  ( Uncompressed )                        ; Offset_0x00FD6C9:
                 incbin  'data\sounds\emrld_9D.snd'
 Music_9E: ; Credits  ( Uncompressed )                        ; Offset_0x00FD797:
                 incbin  'data\sounds\credt_9E.snd'
+				even
 ;-------------------------------------------------------------------------------  
 Sfx_A0_Ptr   equ     (Sfx_A0&$FFFF)|$8000   
 Sfx_A1_Ptr   equ     (Sfx_A1&$FFFF)|$8000    

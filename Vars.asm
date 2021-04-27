@@ -79,8 +79,8 @@ Panic_Snd               equ  $009F
  
 ; Sfx (Efeitos sonoros)
 Jump_Sfx                equ  $00A0
-; Star_Post_Touch_Sfx   equ  $00A1
 Check_Point_Sfx         equ  $00A1
+Star_Post_Touch_Sfx     equ  Check_Point_Sfx
 Enemy_Touch_Sfx         equ  $00A3
 Stopping_Sfx            equ  $00A4
 Spike_Touch_Sfx         equ  $00A6
