@@ -1,10 +1,10 @@
-; Sonic 2 rev 2 Br Version Disassembly (Version 1.0 -> 2011-10-23)
-; Jogo dumpado de meu cartucho Sonic Classics - Tec Toy
+; Sonic 2 REV02 Disassembly (Version 1.0 -> 2011-10-23)
+; Dumped from Sonic Classics - Tec Toy
 ; - By Esrael L. G. Neto (www.sonichacking.com / www.esraelneto.com.br)
 ;  (Neto baiano)
                 include 'vars.asm';
 		org 0
-; Sega Genesis Rom Header 
+; Sega Genesis/Megadrive ROM Header 
                 dc.l    StackPointer            ; Initial stack pointer value
                 dc.l    ProgramStart            ; Start of our program in ROM
                 dc.l    BusError                ; Bus error
@@ -75,9 +75,9 @@ Console:
 Date:                
                 dc.b    '(C)SEGA 1997.JAN'
 Title_Local:                
-                dc.b    'SONIC THE             HEDGEHOG 2                '
+                dc.b    "SONIC THE             HEDGEHOG 2                "
 Title_International:                
-                dc.b    'SONIC THE             HEDGEHOG 2                '
+                dc.b    "SONIC THE             HEDGEHOG 2                "
 Serial:                
                 dc.b    'GM 00001051-02'
 Checksum: ; Offset_0x00018E:                
@@ -99,8 +99,8 @@ Notes:
 Region:                
                 dc.b    'JUE             '            
 ;===============================================================================
-; Sub Rotinas de tratamento das exceções do programa / jogo   
-; [ Início ]
+; End of header/Start of the game code
+; [ Start ]
 ;===============================================================================
 ErrorTrap: ; Offset_0x000200
 BusError: 
@@ -250,8 +250,8 @@ Go_Options_Menu: ; Offset_0x0003C2:
 Go_Level_Select_Menu: ; Offset_0x0003C8:
                 jmp     (Main_Menu_Screen)                     ; Offset_0x008B50       
 ;===============================================================================
-; Sub Rotina VBlank - Interrupção de retraço vertical         
-; [ Início ]
+; VBlank subroutine - Vertical Retrace Interrupt       
+; [ Start ]
 ;===============================================================================
 VBlank: ; Offset_0x0003CE:    
                 movem.l D0-D7/A0-A6, -(A7)
@@ -510,8 +510,8 @@ Offset_0x000710:
                 move.b  #$01, ($FFFFF64F).w
                 rts                    
 ;===============================================================================
-; Sub Rotina DemoTime - Rotina para executar um demo durante um tempo        
-; [ Início ]
+; DemoTime subroutine - Routine to run a demo for a specified amount of time
+; [ Start ]
 ;===============================================================================
 DemoTime: ; Offset_0x0007AE:
                 jsr     (LoadTilesAsYouMove)                   ; Offset_0x00DA14
@@ -523,8 +523,8 @@ DemoTime: ; Offset_0x0007AE:
 Exit_DemoTime: ; Offset_0x0007CA:
                 rts
 ;===============================================================================
-; Sub Rotina DemoTime - Rotina para executar um demo durante um tempo          
-; [ Fim ]
+; DemoTime Subroutine - Routine to run a demo for a specified amount of time
+; [ End ]
 ;===============================================================================  
 Offset_0x0007CC:
                 move.w  #$0100, (Z80_Bus_Request)                    ; $00A11100
@@ -995,13 +995,13 @@ Offset_0x000EC6:
                 move.w  #$0000, (Z80_Bus_Request)                    ; $00A11100
                 rts                             
 ;===============================================================================
-; Sub Rotina VBlank - Interrupção de retraço vertical         
-; [ Término ]
+; VBlank subroutine - Vertical Retrace Interrupt       
+; [ End ]
 ;===============================================================================
                                   
 ;===============================================================================
-; Sub Rotina HBlank - Interrupção de retraço horizontal         
-; [ Início ]
+; HBlank subroutine - Horizontal Retrace Interrupt
+; [ Start ]
 ;===============================================================================
 HBlank: ; Offset_0x000F1C:
                 tst.w   ($FFFFF644).w
@@ -1045,13 +1045,13 @@ Offset_0x000FA8:
 Offset_0x000FC6:
                 rte
 ;===============================================================================
-; Sub Rotina HBlank - Interrupção de retraço horizontal         
-; [ Término ]
+; HBlank subroutine - Horizontal Retrace Interrupt
+; [ End ]
 ;===============================================================================                 
 
 ;===============================================================================
-; Sub Rotina Pal_To_ColorRAM - Transfere as paletas da Ram para a Color Ram         
-; [ Início ]
+; Pal_To_ColorRAM subroutine - Transfers palettes (in RAM) to CRAM
+; [ Start ]
 ;===============================================================================                  
 Pal_To_ColorRAM: ; Offset_0x000FC8:
                 move    #$2700, SR
@@ -1105,13 +1105,13 @@ Offset_0x00103A:
                 movem.l (A7)+, D0-D7/A0-A6
                 rte
 ;===============================================================================
-; Sub Rotina Pal_To_ColorRAM - Transfere as paletas da Ram para a Color Ram         
-; [ Término ]
+; Pal_To_ColorRAM subroutine - Transfers palettes (in RAM) to CRAM
+; [ End ]
 ;=============================================================================== 
 
 ;===============================================================================
-; Sub Rotina para colocar o som selecionado no Driver de Som
-; [ Início ]
+; Sound_Driver_Input subroutine - Puts the selected sound into the sound driver
+; [ Start ]
 ;===============================================================================   
 Sound_Driver_Input: ; Offset_0x00104C:
                 lea     ($00FFFFC0), A0
@@ -1148,13 +1148,13 @@ Offset_0x0010A2:
                 dbra    D1, Offset_0x00108E
                 rts
 ;===============================================================================
-; Sub Rotina para colocar o som selecionado no Driver de Som
-; [ Término ]
+; Sound_Driver_Input subroutine - Puts the selected sound into the sound driver
+; [ End ]
 ;===============================================================================  
         
 ;===============================================================================
-; Sub Rotina JoypadInit
-; [ Início ]
+; JoypadInit subroutine
+; [ Start ]
 ;===============================================================================  
 JoypadInit: ; Offset_0x0010A8:
                 move.w  #$0100, (Z80_Bus_Request)                    ; $00A11100
@@ -1168,13 +1168,13 @@ JoypadInit_Z80Wait: ; Offset_0x0010B0:
                 move.w  #$0000, (Z80_Bus_Request)                    ; $00A11100
                 rts
 ;===============================================================================
-; Sub Rotina JoypadInit
-; [ Término ]
+; JoypadInit subroutine
+; [ End ]
 ;===============================================================================
   
 ;===============================================================================
-; Sub Rotina ReadJoypads
-; [ Início ]
+; ReadJoypads subroutine
+; [ Start ]
 ;===============================================================================                  
 ReadJoypads: ; Offset_0x0010D8:
                 lea     ($FFFFF604).w, A0
@@ -1202,13 +1202,13 @@ Joypad_Read: ; Offset_0x0010E6:
                 move.b  D1, (A0)+
                 rts
 ;===============================================================================
-; Sub Rotina ReadJoypads
-; [ Término ]
+; ReadJoypads subroutine
+; [ End ]
 ;===============================================================================
 
 ;===============================================================================
-; Sub Rotina VDPRegSetup
-; [ Início ]
+; VDPRegSetup subroutine - Sets up VDP values
+; [ Start ]
 ;=============================================================================== 
 VDPRegSetup: ; Offset_0x001114:
                 lea     (VDP_Control_Port), A0                       ; $00C00004
@@ -1251,13 +1251,13 @@ VDPRegSetup_Array: ; Offset_0x00119E:
                 dc.w    $8800, $8900, $8A00, $8B00, $8C81, $8D3F, $8E00, $8F02
                 dc.w    $9001, $9100, $9200              
 ;===============================================================================
-; Sub Rotina VDPRegSetup
-; [ Término ]
+; VDPRegSetup subroutine - Sets up VDP values
+; [ End ]
 ;=============================================================================== 
 
 ;===============================================================================
-; Sub Rotina ClearScreen
-; [ Início ]
+; ClearScreen subroutine
+; [ Start ]
 ;===============================================================================                
 ClearScreen: ; Offset_0x0011C4:
                 move.w  #$0100, (Z80_Bus_Request)                    ; $00A11100
@@ -1328,21 +1328,21 @@ ClearScreen_ClearBuffer2: ; Offset_0x0012B6:
                 move.w  #$0000, (Z80_Bus_Request)                    ; $00A11100
                 rts
 ;===============================================================================
-; Sub Rotina ClearScreen
-; [ Término ]
+; ClearScreen subroutine
+; [ End ]
 ;===============================================================================                
 
 
 
 
 ;===============================================================================
-; Inicialização do driver de Som
-; [ Início ]
+; Sound Driver Startup
+; [ Start ]
 ;===============================================================================                 
 SoundDriverLoad: ; Offset_0x0012C6:
                 nop
                 jmp     (Sound_Driver)                         ; Offset_0x0EC000
-; Offset_0x0012CE: ; Código não usado                
+; Offset_0x0012CE: ; Unused code              
                 move.w  #$0100, (Z80_Bus_Request)                    ; $00A11100
                 move.w  #$0100, (Z80_Reset)                          ; $00A11200
                 lea     (Z80_RAM_Start), A1                          ; $00A00000
@@ -1360,12 +1360,12 @@ SoundDriverLoad: ; Offset_0x0012C6:
                 move.w  #$0000, (Z80_Bus_Request)                    ; $00A11100
                 rts     
 ;===============================================================================
-; Inicialização do driver de Som
-; [ Término ]
+; Sound Driver Startup
+; [ End ]
 ;===============================================================================  
 
 ;===============================================================================
-; Início das rotinas para tocar os sons
+; Start of routines to play sounds
 ;===============================================================================                              
 Play_Music: ; Offset_0x00131A:
                 tst.b   ($FFFFFFC0).w
@@ -1388,12 +1388,12 @@ Play_Sfx_Ex: ; Offset_0x001338:
 Offset_0x001342:
                 rts
 ;===============================================================================
-; Término das rotinas para tocar os sons
+; End of routines to play the sounds
 ;===============================================================================  
 
 ;===============================================================================
-; Sub Rotina Pause - Rotina para pausar o jogo
-; [ Início ]
+; Pause subroutine - Routine to pause the game
+; [ Start ]
 ;===============================================================================                
 Pause: ; Offset_0x001344:
                 nop
@@ -1439,13 +1439,13 @@ Pause_SlowMotion: ; Offset_0x0013BC:
                 move.b  #$FF, ($FFFFFFC0).w
                 rts                
 ;===============================================================================
-; Sub Rotina Pause - Rotina para pausar o jogo
-; [ Término ]
+; Pause subroutine - Routine to pause the game
+; [ End ]
 ;===============================================================================  
 
 ;===============================================================================
-; Sub Rotina ShowVDPGraphics
-; [ Início ]
+; ShowVDPGraphics subroutine
+; [ Start ]
 ;===============================================================================                   
 ShowVDPGraphics: ; Offset_0x0013CA:
                 lea     (VDP_Data_Port), A6                          ; $00C00000
@@ -1460,13 +1460,13 @@ ShowVDPGraphics_TileLoop: ; Offset_0x0013DC:
                 dbra    D2, ShowVDPGraphics_LineLoop           ; Offset_0x0013D6
                 rts
 ;===============================================================================
-; Sub Rotina ShowVDPGraphics
-; [ Término ]
+; ShowVDPGraphics subroutine
+; [ End ]
 ;===============================================================================
 
 ;===============================================================================
-; Sub Rotina ShowVDPGraphics_SS
-; [ Início ]
+; ShowVDPGraphics_SS subroutine
+; [ Start ]
 ;===============================================================================                   
 ShowVDPGraphics_SS: ; Offset_0x0013EA:
                 lea     (VDP_Data_Port), A6                          ; $00C00000
@@ -1481,13 +1481,13 @@ ShowVDPGraphicsSS_TileLoop: ; Offset_0x0013FC:
                 dbra    D2, ShowVDPGraphicsSS_LineLoop         ; Offset_0x0013F6
                 rts 
 ;===============================================================================
-; Sub Rotina ShowVDPGraphics_SS
-; [ Término ]
+; ShowVDPGraphics_SS subroutine
+; [ End ]
 ;===============================================================================   
 
 ;===============================================================================
-; Sub Rotina DMA_68KtoVRAM - Rotina de transferência dos sprites para a VRAM       
-; [ Início ]
+; DMA_68KtoVRAM subroutine - transfer sprites to VRAM
+; [ Start ]
 ;===============================================================================  
 DMA_68KtoVRAM: ; Offset_0x00140A:
                 move.l  ($FFFFDCFC).w, A1
@@ -1525,13 +1525,13 @@ DMA_68KtoVRAM: ; Offset_0x00140A:
 DMA_68KtoVRAM_NoDMA: ; Offset_0x001466:
                 rts
 ;===============================================================================
-; Sub Rotina DMA_68KtoVRAM - Rotina de transferência dos sprites para a VRAM      
-; [ Término ]
+; DMA_68KtoVRAM subroutine - transfer sprites to VRAM
+; [ End ]
 ;=============================================================================== 
 
 ;===============================================================================
-; Sub Rotina Process_DMA     
-; [ Início ]
+; Process_DMA subroutine
+; [ Start ]
 ;===============================================================================   
 Process_DMA: ; Offset_0x001468:
                 lea     (VDP_Control_Port), A5                       ; $00C00004
@@ -1553,17 +1553,13 @@ Process_DMA_End: ; Offset_0x00148A:
                 move.l  #$FFFFDC00, ($FFFFDCFC).w
                 rts
 ;===============================================================================
-; Sub Rotina Process_DMA     
-; [ Término ]
+; Process_DMA subroutine
+; [ End ]
 ;===============================================================================                 
   
 ;===============================================================================
-; Início das rotinas de descompressão no formato Nemesis  
-;===============================================================================                 
-;===============================================================================
-; Sub Rotina NemesisDec - Rotina de descompressão no formato Nemesis       
-; [ Início ]
-;===============================================================================   
+; Start of nemesis decompression routines 
+;===============================================================================                  
 NemesisDec: ; Offset_0x00149A:                              
                 movem.l D0-D7/A0/A1/A3-A5, -(A7)
                 lea     (NemesisDec_Output), A3                ; Offset_0x00155C
@@ -1577,8 +1573,8 @@ Offset_0x0014B6:
                 move.w  (A0)+, D2
                 lsl.w   #$01, D2
                 bcc.s   Offset_0x0014C4
-                adda.w  #$000A, A3   ; Aponta A3 para NemesisDec_Output_XOR se A3 = NemesisDec_Output ou
-Offset_0x0014C4:                     ; Aponta A3 para NemesisDec_OutputRAM_XOR se A3 = NemesisDec_OutputRAM
+                adda.w  #$000A, A3   ; Points A3 to NemesisDec_Output_XOR if A3 = NemesisDec_Output or
+Offset_0x0014C4:                     ; Points A3 to NemesisDec_OutputRAM_XOR if A3 = NemesisDec_OutputRAM
                 lsl.w   #$02, D2
                 move.w  D2, A5
                 moveq   #$08, D3
@@ -1592,15 +1588,7 @@ Offset_0x0014C4:                     ; Aponta A3 para NemesisDec_OutputRAM_XOR s
                 bsr.s   NemesisDec_2                           ; Offset_0x0014E4
                 movem.l (A7)+, D0-D7/A0/A1/A3-A5
                 rts
-;===============================================================================
-; Sub Rotina NemesisDec - Rotina de descompressão no formato Nemesis       
-; [ Término ]
-;=============================================================================== 
-
-;===============================================================================
-; Sub Rotina NemesisDec_2 - Rotina de descompressão no formato Nemesis       
-; [ Início ]
-;===============================================================================   
+				
 NemesisDec_2: ; Offset_0x0014E4:
                 move.w  D6, D7
                 subq.w  #$08, D7
@@ -1631,26 +1619,15 @@ NemesisDec_Loop_SubType: ; Offset_0x00151C:
                 or.b    D1, D4
                 subq.w  #$01, D3
                 bne.s   Offset_0x00152A
-                jmp     (A3)       ; A3 Contém uma das rotinas de descompressão no formato Nemesis.
-;===============================================================================
-; Sub Rotina NemesisDec_2 - Rotina de descompressão no formato Nemesis       
-; [ Término ]
-;===============================================================================
-                 
-;===============================================================================
-; Sub Rotina NemesisDec_3 - Rotina de descompressão no formato Nemesis       
-; [ Início ]
-;===============================================================================  
+                jmp     (A3)       ; A3 contains one of the nemesis decompression routines
+				
 NemesisDec_3: ; Offset_0x001526:                
                 moveq   #$00, D4
                 moveq   #$08, D3
 Offset_0x00152A:
                 dbra    D0, NemesisDec_Loop_SubType            ; Offset_0x00151C
                 bra.s   NemesisDec_2                           ; Offset_0x0014E4
-;===============================================================================
-; Sub Rotina NemesisDec_3 - Rotina de descompressão no formato Nemesis       
-; [ Fim ]
-;===============================================================================      
+   
 Offset_0x001530:
                 subq.w  #$06, D6
                 cmpi.w  #$0009, D6
@@ -1671,10 +1648,7 @@ Offset_0x00153E:
                 asl.w   #$08, D5
                 move.b  (A0)+, D5
                 bra.s   Offset_0x00151A
-;===============================================================================
-; Sub Rotinas de saídas de dados da descompressão no formato Nemesis       
-; [ Início ]
-;===============================================================================                
+              
 NemesisDec_Output: ; Offset_0x00155C:
                 move.l  D4, (A4)
                 subq.w  #$01, A5
@@ -1701,15 +1675,7 @@ NemesisDec_OutputRAM_XOR: ; Offset_0x00157C:
                 move.w  A5, D4
                 bne.s   NemesisDec_3                           ; Offset_0x001526
                 rts 
-;===============================================================================
-; Sub Rotinas de saídas de dados da descompressão no formato Nemesis        
-; [ Fim ]
-;===============================================================================   
 
-;===============================================================================
-; Sub Rotina NemesisDec_4 - Rotina de descompressão no formato Nemesis       
-; [ Início ]
-;===============================================================================
 NemesisDec_4: ; Offset_0x001588:
                 move.b  (A0)+, D0
 Offset_0x00158A:                
@@ -1750,16 +1716,12 @@ Offset_0x0015CE:
                 dbra    D5, Offset_0x0015CE
                 bra.s   Offset_0x001594
 ;===============================================================================
-; Sub Rotina NemesisDec_4 - Rotina de descompressão no formato Nemesis       
-; [ Término ]
-;=============================================================================== 
-;===============================================================================
-; Término das rotinas de descompressão no formato Nemesis  
+; End of Nemesis decompression routines
 ;===============================================================================                  
                 
 ;===============================================================================
-; Sub Rotina LoadPLC - Rotina de para carregar os Sprites no array ArtLoadCues      
-; [ Início ]           de acordo com o index em D0
+; LoadPLC subroutine - Routine to load graphics into the ArtLoadCues array
+; [ Start ]            according to the value set in D0
 ;===============================================================================   
 LoadPLC: ; Offset_0x0015DA:                               
                 movem.l A1/A2, -(A7)
@@ -1784,13 +1746,13 @@ Offset_0x001606:
                 movem.l (A7)+, A1/A2
                 rts 
 ;===============================================================================
-; Sub Rotina LoadPLC - Rotina de para carregar os Sprites no array ArtLoadCues      
-; [ Término ]          de acordo com o index em D0
+; LoadPLC subroutine - Routine to load graphics into the ArtLoadCues array
+; [ End ]              according to the value set in D0
 ;=============================================================================== 
 
 ;===============================================================================
-; Sub Rotina LoadPLC2 - Rotina de para carregar os Sprites no array ArtLoadCues      
-; [ Início ]            de acordo com o index em D0
+; LoadPLC2 subroutine- Routine to load graphics into the ArtLoadCues array
+; [ Start ]            according to the value set in D0
 ;=============================================================================== 
 LoadPLC2: ; Offset_0x00160C:
                 movem.l A1/A2, -(A7)
@@ -1810,13 +1772,13 @@ Offset_0x001632:
                 movem.l (A7)+, A1/A2
                 rts
 ;===============================================================================
-; Sub Rotina LoadPLC2 - Rotina de para carregar os Sprites no array ArtLoadCues      
-; [ Término ]           de acordo com o index em D0
+; LoadPLC2 subroutine- Routine to load graphics into the ArtLoadCues array
+; [ End ]              according to the value set in D0
 ;=============================================================================== 
 
 ;===============================================================================
-; Sub Rotina ClearPLC
-; [ Início ]
+; ClearPLC subroutine
+; [ Start ]
 ;===============================================================================                
 ClearPLC: ; Offset_0x001638:
                 lea     ($FFFFF680).w, A2
@@ -1826,8 +1788,8 @@ ClearPLC_Loop: ; Offset_0x00163E
                 dbra    D0, ClearPLC_Loop                      ; Offset_0x00163E
                 rts
 ;===============================================================================
-; Sub Rotina ClearPLC
-; [ Término ]
+; ClearPLC subroutine
+; [ End ]
 ;===============================================================================
 
 ;===============================================================================
@@ -36073,7 +36035,7 @@ Objects_Layout: ; Offset_0x0E6800:
                 dc.w    SCz_1_Objects_Layout-Objects_Layout    ; Offset_0x0EBBDE
                 dc.w    SCz_2_Objects_Layout-Objects_Layout    ; Offset_0x0EBD4C
 ;-------------------------------------------------------------------------------                 
-                dc.w    $FFFF, $0000, $0000 ; O jogo travará se não existir estes bytes   
+                dc.w    $FFFF, $0000, $0000 ; The game will lock up if these bytes do not exist
 ;-------------------------------------------------------------------------------   
 EHz_1_Objects_Layout: ; Offset_0x0E684A:
                 incbin  'data\ehz\obj_act1.dat'
@@ -36202,8 +36164,8 @@ MCz_Bridge:                                                   ; Offset_0x0F1E06:
 ;===============================================================================                                       
                 org    	$000EC000
 ;===============================================================================
-; Driver de Som
-; [ Início ]
+; Sound Driver
+; [ Start ]
 ;===============================================================================                
 Sound_Driver: ; Offset_0x0EC000:
                 move    SR, -(A7)
@@ -36360,36 +36322,36 @@ Sega_Snd: ; Offset_0x0F1E8C:
 ;-------------------------------------------------------------------------------                              
                 cnop 0,$F8000
 Music_81_To_9F:
-		dc.w	(((Music_88_Ptr>>$8)|(Music_88_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_82_Ptr>>$8)|(Music_82_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_85_Ptr>>$8)|(Music_85_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_89_Ptr>>$8)|(Music_89_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_8B_Ptr>>$8)|(Music_8B_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_83_Ptr>>$8)|(Music_83_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_87_Ptr>>$8)|(Music_87_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_8A_Ptr>>$8)|(Music_8A_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_92_Ptr>>$8)|(Music_92_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_91_Ptr>>$8)|(Music_91_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_95_Ptr>>$8)|(Music_95_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_94_Ptr>>$8)|(Music_94_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_8E_Ptr>>$8)|(Music_8E_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_93_Ptr>>$8)|(Music_93_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_8D_Ptr>>$8)|(Music_8D_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_84_Ptr>>$8)|(Music_84_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_8F_Ptr>>$8)|(Music_8F_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_8C_Ptr>>$8)|(Music_8C_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_81_Ptr>>$8)|(Music_81_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_96_Ptr>>$8)|(Music_96_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_86_Ptr>>$8)|(Music_86_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_98_Ptr>>$8)|(Music_98_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_99_Ptr>>$8)|(Music_99_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_9A_Ptr>>$8)|(Music_9A_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_9B_Ptr>>$8)|(Music_9B_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_97_Ptr>>$8)|(Music_97_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_9D_Ptr>>$8)|(Music_9D_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_90_Ptr>>$8)|(Music_90_Ptr<<$8))&$FFFF) 
-		dc.w	(((Music_9F_Ptr>>$8)|(Music_9F_Ptr<<$8))&$FFFF)
-		dc.w	(((Music_9E_Ptr>>$8)|(Music_9E_Ptr<<$8))&$FFFF)
+		dc.w	(((Music_88_Ptr>>8)|(Music_88_Ptr<<8))&$FFFF)
+		dc.w	(((Music_82_Ptr>>8)|(Music_82_Ptr<<8))&$FFFF)
+		dc.w	(((Music_85_Ptr>>8)|(Music_85_Ptr<<8))&$FFFF)
+		dc.w	(((Music_89_Ptr>>8)|(Music_89_Ptr<<8))&$FFFF)
+		dc.w	(((Music_8B_Ptr>>8)|(Music_8B_Ptr<<8))&$FFFF)
+		dc.w	(((Music_83_Ptr>>8)|(Music_83_Ptr<<8))&$FFFF)
+		dc.w	(((Music_87_Ptr>>8)|(Music_87_Ptr<<8))&$FFFF) 
+		dc.w	(((Music_8A_Ptr>>8)|(Music_8A_Ptr<<8))&$FFFF) 
+		dc.w	(((Music_92_Ptr>>8)|(Music_92_Ptr<<8))&$FFFF) 
+		dc.w	(((Music_91_Ptr>>8)|(Music_91_Ptr<<8))&$FFFF) 
+		dc.w	(((Music_95_Ptr>>8)|(Music_95_Ptr<<8))&$FFFF)
+		dc.w	(((Music_94_Ptr>>8)|(Music_94_Ptr<<8))&$FFFF)
+		dc.w	(((Music_8E_Ptr>>8)|(Music_8E_Ptr<<8))&$FFFF)
+		dc.w	(((Music_93_Ptr>>8)|(Music_93_Ptr<<8))&$FFFF)
+		dc.w	(((Music_8D_Ptr>>8)|(Music_8D_Ptr<<8))&$FFFF)
+		dc.w	(((Music_84_Ptr>>8)|(Music_84_Ptr<<8))&$FFFF) 
+		dc.w	(((Music_8F_Ptr>>8)|(Music_8F_Ptr<<8))&$FFFF) 
+		dc.w	(((Music_8C_Ptr>>8)|(Music_8C_Ptr<<8))&$FFFF) 
+		dc.w	(((Music_81_Ptr>>8)|(Music_81_Ptr<<8))&$FFFF) 
+		dc.w	(((Music_96_Ptr>>8)|(Music_96_Ptr<<8))&$FFFF) 
+		dc.w	(((Music_86_Ptr>>8)|(Music_86_Ptr<<8))&$FFFF) 
+		dc.w	(((Music_98_Ptr>>8)|(Music_98_Ptr<<8))&$FFFF) 
+		dc.w	(((Music_99_Ptr>>8)|(Music_99_Ptr<<8))&$FFFF) 
+		dc.w	(((Music_9A_Ptr>>8)|(Music_9A_Ptr<<8))&$FFFF) 
+		dc.w	(((Music_9B_Ptr>>8)|(Music_9B_Ptr<<8))&$FFFF)
+		dc.w	(((Music_97_Ptr>>8)|(Music_97_Ptr<<8))&$FFFF) 
+		dc.w	(((Music_9D_Ptr>>8)|(Music_9D_Ptr<<8))&$FFFF) 
+		dc.w	(((Music_90_Ptr>>8)|(Music_90_Ptr<<8))&$FFFF) 
+		dc.w	(((Music_9F_Ptr>>8)|(Music_9F_Ptr<<8))&$FFFF)
+		dc.w	(((Music_9E_Ptr>>8)|(Music_9E_Ptr<<8))&$FFFF)
 ;-------------------------------------------------------------------------------                                              
 Music_90: ; Hidden Palace                                    ; Offset_0x00F803C: 
                 incbin  'data\sounds\hpz_90.sax' 
@@ -36536,87 +36498,87 @@ Sfx_EF_Ptr equ (Sfx_EF&$FFFF)|$8000
 Sfx_F0_Ptr equ (Sfx_F0&$FFFF)|$8000
 ;-------------------------------------------------------------------------------          
 Sfx_A0_To_F9:
-		dc.w	(((Sfx_A0_Ptr>>$8)|(Sfx_A0_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_A1_Ptr>>$8)|(Sfx_A1_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_A2_Ptr>>$8)|(Sfx_A2_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_A3_Ptr>>$8)|(Sfx_A3_Ptr<<$8))&$FFFF)
-		dc.w	(((Sfx_A4_Ptr>>$8)|(Sfx_A4_Ptr<<$8))&$FFFF)
-		dc.w	(((Sfx_A5_Ptr>>$8)|(Sfx_A5_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_A6_Ptr>>$8)|(Sfx_A6_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_A7_Ptr>>$8)|(Sfx_A7_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_A8_Ptr>>$8)|(Sfx_A8_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_A9_Ptr>>$8)|(Sfx_A9_Ptr<<$8))&$FFFF)
-		dc.w	(((Sfx_AA_Ptr>>$8)|(Sfx_AA_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_AB_Ptr>>$8)|(Sfx_AB_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_AC_Ptr>>$8)|(Sfx_AC_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_AD_Ptr>>$8)|(Sfx_AD_Ptr<<$8))&$FFFF)
-		dc.w	(((Sfx_AE_Ptr>>$8)|(Sfx_AE_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_AF_Ptr>>$8)|(Sfx_AF_Ptr<<$8))&$FFFF)
-		dc.w	(((Sfx_B0_Ptr>>$8)|(Sfx_B0_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_B1_Ptr>>$8)|(Sfx_B1_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_B2_Ptr>>$8)|(Sfx_B2_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_B3_Ptr>>$8)|(Sfx_B3_Ptr<<$8))&$FFFF)
-		dc.w	(((Sfx_B4_Ptr>>$8)|(Sfx_B4_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_B5_Ptr>>$8)|(Sfx_B5_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_B6_Ptr>>$8)|(Sfx_B6_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_B7_Ptr>>$8)|(Sfx_B7_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_B8_Ptr>>$8)|(Sfx_B8_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_B9_Ptr>>$8)|(Sfx_B9_Ptr<<$8))&$FFFF)
-		dc.w	(((Sfx_BA_Ptr>>$8)|(Sfx_BA_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_BB_Ptr>>$8)|(Sfx_BB_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_BC_Ptr>>$8)|(Sfx_BC_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_BD_Ptr>>$8)|(Sfx_BD_Ptr<<$8))&$FFFF)
-		dc.w	(((Sfx_BE_Ptr>>$8)|(Sfx_BE_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_BF_Ptr>>$8)|(Sfx_BF_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_C0_Ptr>>$8)|(Sfx_C0_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_C1_Ptr>>$8)|(Sfx_C1_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_C2_Ptr>>$8)|(Sfx_C2_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_C3_Ptr>>$8)|(Sfx_C3_Ptr<<$8))&$FFFF)
-		dc.w	(((Sfx_C4_Ptr>>$8)|(Sfx_C4_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_C5_Ptr>>$8)|(Sfx_C5_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_C6_Ptr>>$8)|(Sfx_C6_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_C7_Ptr>>$8)|(Sfx_C7_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_C8_Ptr>>$8)|(Sfx_C8_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_C9_Ptr>>$8)|(Sfx_C9_Ptr<<$8))&$FFFF)
-		dc.w	(((Sfx_CA_Ptr>>$8)|(Sfx_CA_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_CB_Ptr>>$8)|(Sfx_CB_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_CC_Ptr>>$8)|(Sfx_CC_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_CD_Ptr>>$8)|(Sfx_CD_Ptr<<$8))&$FFFF)
-		dc.w	(((Sfx_CE_Ptr>>$8)|(Sfx_CE_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_CF_Ptr>>$8)|(Sfx_CF_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_D0_Ptr>>$8)|(Sfx_D0_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_D1_Ptr>>$8)|(Sfx_D1_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_D2_Ptr>>$8)|(Sfx_D2_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_D3_Ptr>>$8)|(Sfx_D3_Ptr<<$8))&$FFFF)
-		dc.w	(((Sfx_D4_Ptr>>$8)|(Sfx_D4_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_D5_Ptr>>$8)|(Sfx_D5_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_D6_Ptr>>$8)|(Sfx_D6_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_D7_Ptr>>$8)|(Sfx_D7_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_D8_Ptr>>$8)|(Sfx_D8_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_D9_Ptr>>$8)|(Sfx_D9_Ptr<<$8))&$FFFF)
-		dc.w	(((Sfx_DA_Ptr>>$8)|(Sfx_DA_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_DB_Ptr>>$8)|(Sfx_DB_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_DC_Ptr>>$8)|(Sfx_DC_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_DD_Ptr>>$8)|(Sfx_DD_Ptr<<$8))&$FFFF)
-		dc.w	(((Sfx_DE_Ptr>>$8)|(Sfx_DE_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_DF_Ptr>>$8)|(Sfx_DF_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_E0_Ptr>>$8)|(Sfx_E0_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_E1_Ptr>>$8)|(Sfx_E1_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_E2_Ptr>>$8)|(Sfx_E2_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_E3_Ptr>>$8)|(Sfx_E3_Ptr<<$8))&$FFFF)
-		dc.w	(((Sfx_E4_Ptr>>$8)|(Sfx_E4_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_E5_Ptr>>$8)|(Sfx_E5_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_E6_Ptr>>$8)|(Sfx_E6_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_E7_Ptr>>$8)|(Sfx_E7_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_E8_Ptr>>$8)|(Sfx_E8_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_E9_Ptr>>$8)|(Sfx_E9_Ptr<<$8))&$FFFF)
-		dc.w	(((Sfx_EA_Ptr>>$8)|(Sfx_EA_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_EB_Ptr>>$8)|(Sfx_EB_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_EC_Ptr>>$8)|(Sfx_EC_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_ED_Ptr>>$8)|(Sfx_ED_Ptr<<$8))&$FFFF)
-		dc.w	(((Sfx_EE_Ptr>>$8)|(Sfx_EE_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_EF_Ptr>>$8)|(Sfx_EF_Ptr<<$8))&$FFFF) 
-		dc.w	(((Sfx_F0_Ptr>>$8)|(Sfx_F0_Ptr<<$8))&$FFFF)
+		dc.w	(((Sfx_A0_Ptr>>8)|(Sfx_A0_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_A1_Ptr>>8)|(Sfx_A1_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_A2_Ptr>>8)|(Sfx_A2_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_A3_Ptr>>8)|(Sfx_A3_Ptr<<8))&$FFFF)
+		dc.w	(((Sfx_A4_Ptr>>8)|(Sfx_A4_Ptr<<8))&$FFFF)
+		dc.w	(((Sfx_A5_Ptr>>8)|(Sfx_A5_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_A6_Ptr>>8)|(Sfx_A6_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_A7_Ptr>>8)|(Sfx_A7_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_A8_Ptr>>8)|(Sfx_A8_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_A9_Ptr>>8)|(Sfx_A9_Ptr<<8))&$FFFF)
+		dc.w	(((Sfx_AA_Ptr>>8)|(Sfx_AA_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_AB_Ptr>>8)|(Sfx_AB_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_AC_Ptr>>8)|(Sfx_AC_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_AD_Ptr>>8)|(Sfx_AD_Ptr<<8))&$FFFF)
+		dc.w	(((Sfx_AE_Ptr>>8)|(Sfx_AE_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_AF_Ptr>>8)|(Sfx_AF_Ptr<<8))&$FFFF)
+		dc.w	(((Sfx_B0_Ptr>>8)|(Sfx_B0_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_B1_Ptr>>8)|(Sfx_B1_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_B2_Ptr>>8)|(Sfx_B2_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_B3_Ptr>>8)|(Sfx_B3_Ptr<<8))&$FFFF)
+		dc.w	(((Sfx_B4_Ptr>>8)|(Sfx_B4_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_B5_Ptr>>8)|(Sfx_B5_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_B6_Ptr>>8)|(Sfx_B6_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_B7_Ptr>>8)|(Sfx_B7_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_B8_Ptr>>8)|(Sfx_B8_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_B9_Ptr>>8)|(Sfx_B9_Ptr<<8))&$FFFF)
+		dc.w	(((Sfx_BA_Ptr>>8)|(Sfx_BA_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_BB_Ptr>>8)|(Sfx_BB_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_BC_Ptr>>8)|(Sfx_BC_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_BD_Ptr>>8)|(Sfx_BD_Ptr<<8))&$FFFF)
+		dc.w	(((Sfx_BE_Ptr>>8)|(Sfx_BE_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_BF_Ptr>>8)|(Sfx_BF_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_C0_Ptr>>8)|(Sfx_C0_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_C1_Ptr>>8)|(Sfx_C1_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_C2_Ptr>>8)|(Sfx_C2_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_C3_Ptr>>8)|(Sfx_C3_Ptr<<8))&$FFFF)
+		dc.w	(((Sfx_C4_Ptr>>8)|(Sfx_C4_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_C5_Ptr>>8)|(Sfx_C5_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_C6_Ptr>>8)|(Sfx_C6_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_C7_Ptr>>8)|(Sfx_C7_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_C8_Ptr>>8)|(Sfx_C8_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_C9_Ptr>>8)|(Sfx_C9_Ptr<<8))&$FFFF)
+		dc.w	(((Sfx_CA_Ptr>>8)|(Sfx_CA_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_CB_Ptr>>8)|(Sfx_CB_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_CC_Ptr>>8)|(Sfx_CC_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_CD_Ptr>>8)|(Sfx_CD_Ptr<<8))&$FFFF)
+		dc.w	(((Sfx_CE_Ptr>>8)|(Sfx_CE_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_CF_Ptr>>8)|(Sfx_CF_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_D0_Ptr>>8)|(Sfx_D0_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_D1_Ptr>>8)|(Sfx_D1_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_D2_Ptr>>8)|(Sfx_D2_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_D3_Ptr>>8)|(Sfx_D3_Ptr<<8))&$FFFF)
+		dc.w	(((Sfx_D4_Ptr>>8)|(Sfx_D4_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_D5_Ptr>>8)|(Sfx_D5_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_D6_Ptr>>8)|(Sfx_D6_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_D7_Ptr>>8)|(Sfx_D7_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_D8_Ptr>>8)|(Sfx_D8_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_D9_Ptr>>8)|(Sfx_D9_Ptr<<8))&$FFFF)
+		dc.w	(((Sfx_DA_Ptr>>8)|(Sfx_DA_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_DB_Ptr>>8)|(Sfx_DB_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_DC_Ptr>>8)|(Sfx_DC_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_DD_Ptr>>8)|(Sfx_DD_Ptr<<8))&$FFFF)
+		dc.w	(((Sfx_DE_Ptr>>8)|(Sfx_DE_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_DF_Ptr>>8)|(Sfx_DF_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_E0_Ptr>>8)|(Sfx_E0_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_E1_Ptr>>8)|(Sfx_E1_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_E2_Ptr>>8)|(Sfx_E2_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_E3_Ptr>>8)|(Sfx_E3_Ptr<<8))&$FFFF)
+		dc.w	(((Sfx_E4_Ptr>>8)|(Sfx_E4_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_E5_Ptr>>8)|(Sfx_E5_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_E6_Ptr>>8)|(Sfx_E6_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_E7_Ptr>>8)|(Sfx_E7_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_E8_Ptr>>8)|(Sfx_E8_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_E9_Ptr>>8)|(Sfx_E9_Ptr<<8))&$FFFF)
+		dc.w	(((Sfx_EA_Ptr>>8)|(Sfx_EA_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_EB_Ptr>>8)|(Sfx_EB_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_EC_Ptr>>8)|(Sfx_EC_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_ED_Ptr>>8)|(Sfx_ED_Ptr<<8))&$FFFF)
+		dc.w	(((Sfx_EE_Ptr>>8)|(Sfx_EE_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_EF_Ptr>>8)|(Sfx_EF_Ptr<<8))&$FFFF) 
+		dc.w	(((Sfx_F0_Ptr>>8)|(Sfx_F0_Ptr<<8))&$FFFF)
 ;-------------------------------------------------------------------------------
 Sfx_A0: ; Offset_0x0FEF33:
                 incbin  'data\sounds\sfx_A0.snd'
@@ -36781,6 +36743,6 @@ Sfx_EF: ; Offset_0x0FFF91:
 Sfx_F0: ; Offset_0x0FFFD4:
                 incbin  'data\sounds\sfx_F0.snd' 
 ;===============================================================================
-; Driver de Som
-; [ Término ]
+; Sound Driver
+; [ End ]
 ;===============================================================================    

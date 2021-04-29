@@ -132,8 +132,7 @@ Fast_Sound              equ  $00FB
 Normal_Sound            equ  $00FC
 Stop_Sound              equ  $00FD
 
-; Variaveis para selecionar qual letra dos Title Cards devem ser carregadas para
-; a VRAM
+; Variables to select which letter of Title Cards to be loaded to VRAM
 TC_A                    equ  $0004
 TC_B                    equ  $0404
 TC_C                    equ  $0804
@@ -159,7 +158,7 @@ TC_Y                    equ  $5604
 TCpt                    equ  $5A02   ; "." 
 TC_Break                equ  $FFFF
 
-; Copyright na tela título
+; Copyright text on the title screen
 ___                     equ  $0000
 __1                     equ  $0681 
 __2                     equ  $0682              
@@ -170,7 +169,7 @@ __E                     equ  $0692
 __G                     equ  $0694
 __S                     equ  $06A0     
 
-; Variaveis para os menus exceto seleção de fases que é comprimido
+; Variables for menus except phase selection that is compressed
 __                      equ  $00
 _0                      equ  $10
 _1                      equ  $11
@@ -203,5 +202,5 @@ _X                      equ  $35
 _Y                      equ  $36
 _Z                      equ  $37  
                         
-; String para localizar ponteiro em hexadecimal depois de compilado
+; String to find pointer in hexadecimal after compiled
 Debug                   equ  'Neto'                        

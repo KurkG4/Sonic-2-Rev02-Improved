@@ -1,8 +1,8 @@
 ;
-; Arquivo de projeto Esrael Neto Assembler Editor para o Sonic 2 Final
+; Esrael Neto Assembler Editor project file for Sonic 2 Final
 ;
 ;============================================================
-; O programa procurará o bloco de definições -> [Main]
+; The program will search for the -> [Main]
 ;============================================================
 
 [Main]
