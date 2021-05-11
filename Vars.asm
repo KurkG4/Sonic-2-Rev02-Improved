@@ -202,5 +202,5 @@ _X                      equ  $35
 _Y                      equ  $36
 _Z                      equ  $37  
                         
-; String to find pointer in hexadecimal after compiled
+; String to find pointers in hexadecimal after compiled
 Debug                   equ  'Neto'                        
